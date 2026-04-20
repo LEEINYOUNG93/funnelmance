@@ -1,0 +1,37 @@
+$font-main:'Pretendard', sans-serif;
+$font-sub:'Bebas Neue', sans-serif;
+$main-color:#DFAE76;
+$sub-color:#fff;
+$color-point:#f5ff00;
+
+$iphone: 319px;
+
+$mobile: 767px; 
+
+$tablet: 1023px; 
+
+$desktop: 1439px; 
+
+@mixin iphone{
+  @media (max-width: $iphone){
+    @content;
+  }
+}
+
+@mixin mobile{
+  @media (max-width: $mobile){
+    @content;
+  }
+}
+
+@mixin tablet{
+  @media (max-width: $tablet){
+    @content;
+  }
+}
+
+@mixin desktop{
+  @media (max-width: $desktop){
+    @content;
+  }
+}

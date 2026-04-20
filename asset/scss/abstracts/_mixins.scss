@@ -1,0 +1,27 @@
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin multi-ellipsis($line,$lineHeight) {
+  line-height: $lineHeight;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: $line*$lineHeight;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient:vertical;
+}
+
+@mixin d-flex(){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin bg-img(){
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
