@@ -1,2 +1,66 @@
+// ==============================
+// HEADER
+// ==============================
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $header-height;
+    background: $color-white;
+    z-index: 1000;
+    border-bottom: 1px solid $color-border;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    &.on { opacity: 1; }
+
+    .inner {
+        max-width: $container-max;
+        margin: 0 auto;
+        padding: 0 $container-padding;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .logo {
+        a { display: block; }
+        img { height: 28px; width: auto; }
+    }
+}
+
+// ==============================
+// 인라인 GNB 네비게이션
+// ==============================
+.header_gnb {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+
+    .gnb_item {
+        font-size: 13px;
+        font-weight: 500;
+        color: $color-gray-light;
+        transition: color 0.2s;
+        white-space: nowrap;
+
+        &:hover, &.active {
+            color: $color-text;
+            font-weight: 600;
+        }
+    }
+}
+
+// 반응형: 태블릿 이하에서 GNB 간격 축소
+@media all and (max-width: 1024px) {
+    .header_gnb { gap: 16px; }
+    .header_gnb .gnb_item { font-size: 12px; }
+}
+
+// 반응형: 모바일에서 GNB 숨김
+@media all and (max-width: 768px) {
+    .header_gnb { display: none; }
 }

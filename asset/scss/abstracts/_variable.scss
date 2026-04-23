@@ -1,37 +1,45 @@
-$font-main:'Pretendard', sans-serif;
-$font-sub:'Bebas Neue', sans-serif;
-$main-color:#DFAE76;
-$sub-color:#fff;
-$color-point:#f5ff00;
+// ==============================
+// Funnelmance 기본 변수
+// ==============================
+@import url('https://fonts.cdnfonts.com/css/gmarket-sans');
+$font-main: 'Gmarket Sans', sans-serif;;
+$main-color: #2C91EC;
+$sub-color: #fff;
+$color-point: #f5ff00;
 
 $iphone: 319px;
+$mobile: 767px;
+$tablet: 1023px;
+$desktop: 1439px;
 
-$mobile: 767px; 
-
-$tablet: 1023px; 
-
-$desktop: 1439px; 
-
-@mixin iphone{
-  @media (max-width: $iphone){
-    @content;
-  }
+@mixin iphone {
+    @media (max-width: $iphone) { @content; }
+}
+@mixin mobile {
+    @media (max-width: $mobile) { @content; }
+}
+@mixin tablet {
+    @media (max-width: $tablet) { @content; }
+}
+@mixin desktop {
+    @media (max-width: $desktop) { @content; }
 }
 
-@mixin mobile{
-  @media (max-width: $mobile){
-    @content;
-  }
-}
+// ==============================
+// 색상 변수
+// ==============================
+$color-blue: #2C91EC;
+$color-dark: #0d1b2e;
+$color-navy: #0a1628;
+$color-text: #333333;
+$color-gray: #666666;
+$color-gray-light: #999999;
+$color-border: #dddddd;
+$color-bg-light: #f5f5f5;
+$color-orange: #cc4400;
+$color-white: #ffffff;
+$color-black: #000000;
 
-@mixin tablet{
-  @media (max-width: $tablet){
-    @content;
-  }
-}
-
-@mixin desktop{
-  @media (max-width: $desktop){
-    @content;
-  }
-}
+$header-height: 60px;
+$container-max: 1600px;
+$container-padding: 40px;
