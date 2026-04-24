@@ -963,11 +963,14 @@ html {
 .s-organizational .s_container {
   position: relative;
   z-index: 5;
+  height: 100%;
+}
+.s-organizational .s-title {
+  margin-bottom: 80px;
 }
 .s-organizational .organizational-list {
   display: flex;
   position: relative;
-  padding-bottom: 80px;
 }
 .s-organizational .organizational-list > li {
   flex: 1;
@@ -995,7 +998,7 @@ html {
   justify-content: center;
   flex-direction: column;
   justify-content: center;
-  height: 200px;
+  height: 300px;
   cursor: pointer;
   background: rgba(0, 5, 30, 0.3);
   border: 1px solid #2C91EC;
@@ -1018,9 +1021,9 @@ html {
 .s-organizational .organizational-list .hidden-bx {
   position: absolute;
   left: 0;
-  top: 200px;
+  top: 300px;
   width: 100%;
-  min-height: 100px;
+  min-height: 150px;
   opacity: 0;
   visibility: hidden;
   transition: all 0.5s ease;

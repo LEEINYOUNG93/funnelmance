@@ -980,12 +980,16 @@ html {
   .s_container {
     position: relative;
     z-index: 5;
+    height: 100%;
+  }
+
+  .s-title{
+    margin-bottom: 80px;
   }
 
   .organizational-list {
     display: flex;
     position: relative;
-    padding-bottom: 80px;
 
     >li {
       flex: 1;
@@ -1016,7 +1020,7 @@ html {
       @include d-flex;
       flex-direction: column;
       justify-content: center;
-      height: 200px;
+      height: 300px;
       cursor: pointer;
       background: rgba($color-dark, 0.3);
       border: 1px solid $color-blue;
@@ -1044,9 +1048,9 @@ html {
     .hidden-bx {
       position: absolute;
       left: 0;
-      top: 200px;
+      top: 300px;
       width: 100%;
-      min-height: 100px;
+      min-height: 150px;
       opacity: 0;
       visibility: hidden;
       transition: all 0.5s ease;
