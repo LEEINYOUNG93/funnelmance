@@ -701,51 +701,51 @@ html {
     }
   }
 
-  // .on 진입 시 차트 애니메이션 (순차적: 라인 → 숫자 → 그래프)
+  // .on 진입 시 차트 애니메이션 (에코마케팅과 동일한 순차적 애니메이션)
   &.on .motion {
 
-    // 2018년: 라인 → 숫자 → 그래프 순서
+    // 2018년: 라인(0.1s) → 숫자(0.2s) → 그래프(0.4s)
     .obj01_1 {
       height: 40px !important;
       transition: height 0.3s 0.1s;
     }
 
     .obj01 {
-      animation: f_scale 0.5s ease-out 0.3s forwards;
+      animation: f_scale 0.5s ease-out 0.2s forwards;
     }
 
     .obj04 {
-      animation: f_scale 0.5s ease-out 0.5s forwards;
+      animation: f_scale 0.5s ease-out 0.4s forwards;
     }
 
-    // 2020년: 라인 → 숫자
+    // 2020년: 라인(0.2s) → 숫자(0.3s)
     .obj02_1 {
       height: 40px !important;
       transition: height 0.3s 0.2s;
     }
 
     .obj02 {
-      animation: f_scale 0.5s ease-out 0.4s forwards;
+      animation: f_scale 0.5s ease-out 0.3s forwards;
     }
 
-    // 2024년: 라인 → 숫자
+    // 2024년: 라인(0.3s) → 숫자(0.4s)
     .obj03_1 {
       height: 40px !important;
       transition: height 0.3s 0.3s;
     }
 
     .obj03 {
-      animation: f_scale 0.5s ease-out 0.5s forwards;
+      animation: f_scale 0.5s ease-out 0.4s forwards;
     }
 
-    // 2026년: 라인 → 숫자 (그래프 없음)
+    // 2026년: 라인(2.2s) → 숫자(1.7s)
     .obj06_1 {
       height: 50px !important;
-      transition: height 0.3s 0.4s;
+      transition: height 0.5s 2.2s;
     }
 
     .obj06 {
-      animation: f_scale 0.5s ease-out 0.6s forwards;
+      animation: f_scale 0.5s ease-out 1.7s forwards;
     }
   }
 
