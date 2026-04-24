@@ -41,11 +41,11 @@
     gap: 28px;
 
     .gnb_item {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 500;
         color: $color-gray-light;
-        transition: color 0.2s;
-        white-space: nowrap;
+        transition: color .3s ease-in-out;
+        text-transform: uppercase;
 
         &:hover, &.active {
             color: $color-text;

@@ -1,0 +1,236 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic:
+      - heading [level=1] [ref=e4]:
+        - link [ref=e5] [cursor=pointer]:
+          - /url: /about
+      - link [ref=e6] [cursor=pointer]:
+        - /url: javascript:void(0);
+      - generic [ref=e11]:
+        - link "JP" [ref=e12] [cursor=pointer]:
+          - /url: javascript:language.change('/jp');
+        - link "EN" [ref=e13] [cursor=pointer]:
+          - /url: javascript:language.change('/en');
+        - link "KO" [ref=e14]:
+          - /url: javascript:void(0);
+      - list [ref=e16]:
+        - listitem [ref=e17]:
+          - link "About" [ref=e18] [cursor=pointer]:
+            - /url: /about
+        - listitem [ref=e19]:
+          - link "Work" [ref=e20] [cursor=pointer]:
+            - /url: /work
+        - listitem [ref=e21]:
+          - link "People" [ref=e22] [cursor=pointer]:
+            - /url: /people
+        - listitem [ref=e23]:
+          - link "Career" [ref=e24] [cursor=pointer]:
+            - /url: /echoCareer
+        - listitem [ref=e25]:
+          - link "News" [ref=e26] [cursor=pointer]:
+            - /url: /news
+        - listitem [ref=e27]:
+          - link "IR" [ref=e28] [cursor=pointer]:
+            - /url: /ir
+        - listitem [ref=e29]:
+          - link "Connect" [ref=e30] [cursor=pointer]:
+            - /url: /connect
+  - generic [ref=e32]:
+    - article [ref=e34]:
+      - generic [ref=e36]:
+        - heading [level=2] [ref=e38]
+        - heading [level=2] [ref=e41]:
+          - img [ref=e42]
+    - article [ref=e45]:
+      - generic [ref=e48]:
+        - heading "우리는 로켓입니다." [level=3] [ref=e49]
+        - paragraph [ref=e50]:
+          - text: 인공위성은 우주의 궤도에 올라가야만 원래 의도했던 미션을 수행할 수 있습니다.
+          - text: 궤도에 올라가지 못하면, 아무리 잘 만들어진 인공위성이라도 무용지물이 되어버립니다.
+          - generic [ref=e51]: 고객사의 제품 & 서비스도 마찬가지입니다.
+          - text: 세상에는 다양한 문제를 해결하기 위해 탄생한 수많은 제품과 서비스가 존재합니다.
+          - text: 하지만 장애물을 이겨내지 못하고, 원하는 수준까지 속도감 있게 성장하지 못하여 시장에서 사라져 버리게 됩니다.
+          - text: 대부분 마케팅 역량이 부족해서 발생한 실패입니다.
+          - text: 에코마케팅은 로켓입니다.
+          - text: 에코마케팅이 보유한 마케팅 역량으로 뛰어난 제품을 빠르게 원하는 수준까지 성장시킬 수 있습니다.
+          - text: 시장에 처음 진입하는 제품을 메이저로 성장시키고, 시장의 경쟁이 치열한 제품은 시장의 선두로 올라설 수 있도록 만듭니다.
+          - generic [ref=e52]:
+            - text: 에코마케팅이라는 로켓에 올라타세요.
+            - text: 놀라운 성공을 경험하세요.
+    - article [ref=e58]:
+      - generic [ref=e60]:
+        - figure [ref=e61]
+        - generic [ref=e62]:
+          - generic:
+            - generic:
+              - paragraph [ref=e67]: "광고취급고 (단위 : 억원)"
+              - generic [ref=e69]: "1"
+              - generic [ref=e71]: "6"
+              - generic [ref=e73]: "65"
+              - generic [ref=e78]: 1,727
+              - generic:
+                - paragraph [ref=e79]: "2003"
+                - paragraph [ref=e80]: "2008"
+                - paragraph [ref=e81]: "2013"
+                - paragraph [ref=e82]: "2018"
+    - article [ref=e84]
+    - article [ref=e91]:
+      - generic [ref=e93]:
+        - figure [ref=e94]
+        - list [ref=e98]
+    - article [ref=e100]:
+      - generic [ref=e105]:
+        - list
+    - article [ref=e107]:
+      - generic [ref=e109]:
+        - figure [ref=e110]
+        - list [ref=e114]
+    - article [ref=e116]:
+      - generic [ref=e121]:
+        - generic [ref=e122]:
+          - generic:
+            - paragraph [ref=e133]: Beijing, China
+            - paragraph [ref=e134]: Seoul, Korea(HQ)
+            - paragraph [ref=e135]: Singapore
+        - list [ref=e136]
+    - article [ref=e138]:
+      - generic [ref=e140]:
+        - figure [ref=e141]
+        - generic [ref=e144]:
+          - list [ref=e145]:
+            - listitem [ref=e146]:
+              - generic [ref=e147]: 의뢰 유형*
+              - combobox "의뢰 유형*" [ref=e148]:
+                - option "선택" [selected]
+                - option "마케팅대행"
+                - option "투자&마케팅(비즈니스부스팅)"
+          - group [ref=e149]:
+            - list [ref=e150]:
+              - listitem [ref=e151]:
+                - generic [ref=e152]: 기업명/브랜드명*
+                - textbox "기업명/브랜드명*" [disabled] [ref=e153]
+              - listitem [ref=e154]:
+                - generic [ref=e155]: 월 예산*
+                - combobox "월 예산*" [disabled] [ref=e156] [cursor=pointer]:
+                  - option "월 1억 미만" [disabled]
+                  - option "월 2억 미만" [disabled]
+                  - option "월 2억 ~ 5억" [disabled]
+                  - option "월 5억 ~ 10억" [disabled]
+                  - option "월 10억 이상" [disabled]
+              - listitem [ref=e157]:
+                - generic [ref=e158]: 타겟국가
+                - textbox "타겟국가" [disabled] [ref=e159]
+              - listitem [ref=e160]:
+                - generic [ref=e161]: 홈페이지
+                - textbox "홈페이지" [disabled] [ref=e162]
+              - listitem [ref=e163]:
+                - generic [ref=e164]: 의뢰 제품/서비스 설명*
+                - textbox "의뢰 제품/서비스 설명*" [disabled] [ref=e165]
+              - listitem [ref=e166]:
+                - generic [ref=e167]: 의뢰 범위 및 내용
+                - textbox "의뢰 범위 및 내용" [disabled] [ref=e168]:
+                  - /placeholder: 마케팅 전략 진단/컨설팅, 온라인/오프라인 매체 대행, 트래킹 정비, 크리에이티브 제작 등
+              - listitem [ref=e169]:
+                - generic [ref=e170]: 성함*
+                - textbox "성함*" [disabled] [ref=e171]
+              - listitem [ref=e172]:
+                - generic [ref=e173]: 연락처*
+                - textbox "연락처*" [disabled] [ref=e174]:
+                  - /placeholder: ex) 010-0000-0000
+              - listitem [ref=e175]:
+                - generic [ref=e176]: 이메일*
+                - textbox "이메일*" [disabled] [ref=e177]
+              - listitem [ref=e178]:
+                - generic [ref=e179]: RFP, 회사소개서 등
+                - textbox [disabled] [ref=e180]
+                - generic [ref=e181]: 파일 첨부
+                - button "파일 첨부" [disabled]
+              - listitem [ref=e182]:
+                - checkbox [checked] [disabled] [ref=e183]
+                - generic [ref=e184]:
+                  - generic [ref=e185] [cursor=pointer]: 개인정보 수집·이용
+                  - text: 동의
+                - generic [ref=e186]: "* 의뢰를 위한 개인정보 수집·이용 안내를 확인하였으며, 내용에 동의합니다."
+            - button "제출하기" [disabled] [ref=e188]
+          - text: "* * * * *"
+  - generic [ref=e190]:
+    - list [ref=e192]:
+      - listitem [ref=e193]:
+        - heading "ABOUT" [level=3] [ref=e194]:
+          - link "ABOUT" [ref=e195] [cursor=pointer]:
+            - /url: /about
+        - generic [ref=e196]:
+          - link "About Echo Marketing" [ref=e197] [cursor=pointer]:
+            - /url: /about#s-focus
+          - link "마케팅 협업 문의" [ref=e198] [cursor=pointer]:
+            - /url: /about#s-work
+      - listitem [ref=e199]:
+        - heading "WORK" [level=3] [ref=e200]:
+          - link "WORK" [ref=e201] [cursor=pointer]:
+            - /url: /work
+      - listitem [ref=e202]:
+        - heading "PEOPLE" [level=3] [ref=e203]:
+          - link "PEOPLE" [ref=e204] [cursor=pointer]:
+            - /url: /people
+        - link "우리가 일하는 법" [ref=e206] [cursor=pointer]:
+          - /url: /people#s-people01
+      - listitem [ref=e207]:
+        - heading "CAREER" [level=3] [ref=e208]:
+          - link "CAREER" [ref=e209] [cursor=pointer]:
+            - /url: /echoCareer
+        - generic [ref=e210]:
+          - link "에코WAY" [ref=e211] [cursor=pointer]:
+            - /url: /echoCareer
+          - link "에코PRO" [ref=e212] [cursor=pointer]:
+            - /url: /echoPro
+          - link "인터뷰" [ref=e213] [cursor=pointer]:
+            - /url: /echoIntv
+          - link "지원하기" [ref=e214] [cursor=pointer]:
+            - /url: /echoPblanc
+          - link "크리에이티브 포트폴리오" [ref=e215] [cursor=pointer]:
+            - /url: https://echoportfolio.myportfolio.com/home
+      - listitem [ref=e216]:
+        - heading "NEWS" [level=3] [ref=e217]:
+          - link "NEWS" [ref=e218] [cursor=pointer]:
+            - /url: /news
+        - generic [ref=e219]:
+          - link "News" [ref=e220] [cursor=pointer]:
+            - /url: /news#s-news
+          - link "전자공고" [ref=e221] [cursor=pointer]:
+            - /url: /ir#s-elctrn
+          - link "IR – 자주묻는 질문" [ref=e222] [cursor=pointer]:
+            - /url: /ir#s-ir
+          - link "IR - 문의하기" [ref=e223] [cursor=pointer]:
+            - /url: /ir#s-meeting
+      - listitem [ref=e224]:
+        - heading "CONNECT" [level=3] [ref=e225]:
+          - link "CONNECT" [ref=e226] [cursor=pointer]:
+            - /url: /connect
+      - listitem [ref=e227]:
+        - heading "PROVISION" [level=3] [ref=e228]:
+          - link "PROVISION" [ref=e229] [cursor=pointer]:
+            - /url: javascript:void(0);
+        - generic [ref=e230]:
+          - link "내부정보관리규정" [ref=e231] [cursor=pointer]:
+            - /url: /info
+          - link "개인정보취급방침" [ref=e232] [cursor=pointer]:
+            - /url: /privacy
+          - link "윤리강령" [ref=e233] [cursor=pointer]:
+            - /url: /ethics
+    - heading "페이스북 페이지 바로가기 블로그 바로가기 유투브 바로가기" [level=2]:
+      - generic [ref=e234]:
+        - link "페이스북 페이지 바로가기" [ref=e236] [cursor=pointer]:
+          - /url: https://www.facebook.com/echomkt
+          - img "페이스북 페이지 바로가기" [ref=e237]
+        - link "블로그 바로가기" [ref=e239] [cursor=pointer]:
+          - /url: https://blog.naver.com/echomarket
+          - img "블로그 바로가기" [ref=e240]
+        - link "유투브 바로가기" [ref=e242] [cursor=pointer]:
+          - /url: https://www.youtube.com/channel/UCCgvzwJ_AE8MBnT52gwvrkg
+          - img "유투브 바로가기" [ref=e243]
+    - generic [ref=e244]:
+      - text: (주) 에코마케팅 서울특별시 송파구 올림픽로 35다길 42 루터회관 10,15,24F (05510)
+      - text: "대표번호 02-2182-1100 FAX 02-582-4377 사업자등록번호 : 220-86-60192 대표이사 : 김철웅 개인정보보호책임자 : 남경균"
+    - paragraph [ref=e245]: COPYRIGHT(C) 2022 ECHOMARKETING Co., Ltd. all rights reserved
+  - link [ref=e247] [cursor=pointer]:
+    - /url: "#"

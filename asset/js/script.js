@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // ===== GNB 섹션 네비게이션 =====
     initGnbNav();
 
+    // ===== organizational섹션 Hover =====
+    organizationalHover();
+
     // ===== 클릭 인터랙션 - Capabilities =====
     var capItems = document.querySelectorAll('.cap_list > li');
     capItems.forEach(function (item) {
@@ -139,10 +142,10 @@ function initKvIntro() {
             setTimeout(function () {
                 // 스크롤 이동 실행
                 performCustomScroll(aboutSection.offsetTop, 1000);
-                
+
                 kvSection.classList.add('trans_off');
                 history.replaceState(null, '', '#about');
-            }, 2000); 
+            }, 2000);
         }, 500);
     }
 
@@ -291,4 +294,50 @@ function initScrollAnimations() {
     var worldwideEl = document.querySelector('.s-worldwide');
     if (focusEl) sectionObserver.observe(focusEl);
     if (worldwideEl) sectionObserver.observe(worldwideEl);
+}
+
+function organizationalHover() {
+    const listItems = document.querySelectorAll('.organizational-list > li');
+    let currentIndex = 0;
+    let autoPlay = null;
+
+    // 활성화 함수
+    const activateItem = (index) => {
+        listItems.forEach(li => li.classList.remove('organizational_active'));
+        listItems[index].classList.add('organizational_active');
+        currentIndex = index;
+    };
+
+    // 자동 재생 시작 함수 (3초 주기)
+    const startAutoPlay = () => {
+        if (autoPlay) return; // 이미 실행 중이면 중복 방지
+        autoPlay = setInterval(() => {
+            let nextIndex = (currentIndex + 1) % listItems.length;
+            activateItem(nextIndex);
+        }, 3000);
+    };
+
+    // 자동 재생 중지 함수
+    const stopAutoPlay = () => {
+        clearInterval(autoPlay);
+        autoPlay = null;
+    };
+
+    // 초기 실행
+    activateItem(0);
+    startAutoPlay();
+
+    // 이벤트 바인딩
+    listItems.forEach((item, index) => {
+        // 마우스 올리면 해당 아이템 활성화 + 자동 재생 정지
+        item.addEventListener('mouseenter', () => {
+            stopAutoPlay();
+            activateItem(index);
+        });
+
+        // 마우스 떼면 자동 재생 다시 시작
+        item.addEventListener('mouseleave', () => {
+            startAutoPlay();
+        });
+    });
 }

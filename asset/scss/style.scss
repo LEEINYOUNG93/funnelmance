@@ -912,37 +912,43 @@ html {
 .s-welfare {
   padding: 80px 0;
   background: #022247;
-  strong{
+
+  strong {
     font-weight: bold;
     display: block;
     font-size: 24px;
   }
-  .sub-title{
+
+  .sub-title {
     color: rgba($color-white, 0.7);
     margin: 10px 0 120px 0;
   }
-  .welfare-list{
+
+  .welfare-list {
     @include d-flex;
     flex-wrap: wrap;
     gap: 40px 0;
-    > li{
+
+    >li {
       width: 33.33%;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    img{
+
+    img {
       display: block;
       width: 60px;
       margin: 0 auto;
     }
 
-    h4{
+    h4 {
       margin: 10px 0 20px 0;
       font-weight: bold;
       font-size: 20px;
     }
-    p{
+
+    p {
       color: rgba($color-white, 0.7);
       line-height: 1.4;
     }
@@ -953,13 +959,14 @@ html {
 // ==============================
 // s-organizational 
 // ==============================
-.s-organizational  {
+.s-organizational {
   padding: 80px 0;
   background-image: url(../images/organizational_bg.jpg);
   @include bg-img;
   height: 100vh;
   position: relative;
-  &::before{
+
+  &::before {
     content: "";
     width: 100%;
     height: 100%;
@@ -969,42 +976,47 @@ html {
     left: 0;
     z-index: 1;
   }
-  .s_container{
+
+  .s_container {
     position: relative;
     z-index: 5;
   }
-  .organizational-list{
-    display: flex;
-    margin-top: 80px;
-    gap: 0;
 
-    > li{
+  .organizational-list {
+    display: flex;
+    position: relative;
+    padding-bottom: 80px;
+
+    >li {
       flex: 1;
       cursor: pointer;
-      position: relative;
-      border-right: 1px solid rgba($color-white, 0.15);
+      transition: all .3s ease-in-out;
       opacity: 0.5;
-      transition: opacity 0.3s;
-
-      &:last-child {
-        border-right: none;
-      }
 
       &.organizational_active {
         opacity: 1;
+
+        .top-bx {
+          border-color: $color-blue;
+          background: rgba($color-dark, 0.5);
+        }
+
+        .hidden-bx {
+          opacity: 1;
+          visibility: visible;
+        }
       }
 
       .inner {
         height: 100%;
-        position: relative;
       }
     }
 
-    .top-bx{
+    .top-bx {
       @include d-flex;
       flex-direction: column;
       justify-content: center;
-      padding: 40px 20px;
+      height: 200px;
       cursor: pointer;
       background: rgba($color-dark, 0.3);
       border: 1px solid $color-blue;
@@ -1013,38 +1025,54 @@ html {
       &:hover {
         background: rgba($color-dark, 0.5);
       }
+
+
+      h4 {
+        font-size: 20px;
+        letter-spacing: 0;
+        margin-top: 20px;
+      }
     }
 
-    .icon-bx{
+    .icon-bx {
       width: 60px;
       height: 60px;
       background: $color-white;
       border-radius: 50%;
     }
 
-    h4{
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 0;
-      margin-top: 16px;
-      color: $color-white;
-      text-align: center;
-      line-height: 1.4;
-    }
-
-    .hidden-bx{
-      display: none;
+    .hidden-bx {
+      position: absolute;
+      left: 0;
+      top: 200px;
+      width: 100%;
+      min-height: 100px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s ease;
+      @include d-flex;
       padding: 20px;
       background: $color-blue;
-      min-height: 150px;
-      @include d-flex;
-      align-items: center;
-      justify-content: center;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        /* 화살표 만들기 */
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 15px solid $color-blue;
+        transition: all 0.3s;
+      }
 
       p {
-        font-size: 14px;
+        font-size: 18px;
         color: $color-white;
-        line-height: 1.6;
         text-align: center;
       }
     }
