@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ===== KV 인트로 애니메이션 =====
+    // ===== 인트로 애니메이션 =====
     initKvIntro();
 
     // ===== 스크롤 진입 애니메이션 =====
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ===== GNB 섹션 네비게이션 =====
     initGnbNav();
 
-    // ===== Capabilities 클릭 인터랙션 =====
+    // ===== 클릭 인터랙션 - Capabilities =====
     var capItems = document.querySelectorAll('.cap_list > li');
     capItems.forEach(function (item) {
         var link = item.querySelector('.cap_link');
@@ -33,6 +33,20 @@ document.addEventListener('DOMContentLoaded', function () {
         if (btnClose) {
             btnClose.addEventListener('click', function (e) { e.preventDefault(); });
         }
+    });
+
+    // ===== 클릭 인터랙션 - Organizational =====
+    var orgItems = document.querySelectorAll('.organizational-list > li');
+    orgItems.forEach(function (item) {
+        var topBox = item.querySelector('.top-bx');
+        if (!topBox) return;
+        topBox.addEventListener('click', function (e) {
+            e.preventDefault();
+            orgItems.forEach(function (el) {
+                el.classList.remove('organizational_active');
+            });
+            item.classList.add('organizational_active');
+        });
     });
 
     // ===== 파일 첨부 버튼 =====
@@ -87,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ==============================
-// KV 인트로 애니메이션
+// 인트로 애니메이션
 // ==============================
 function initKvIntro() {
     if (history.scrollRestoration) {
@@ -122,14 +136,13 @@ function initKvIntro() {
             kvSection.classList.add('on');
 
             // ── 핵심 포인트: 애니메이션과 이동을 완전히 겹치기
-            // 2400ms가 아니라 조금 더 앞당겨서(약 2100ms) 이동을 시작하면 훨씬 매끄럽습니다.
             setTimeout(function () {
                 // 스크롤 이동 실행
-                performCustomScroll(aboutSection.offsetTop, 1000); // 1.5초 동안 아주 천천히 이동
+                performCustomScroll(aboutSection.offsetTop, 1000);
                 
                 kvSection.classList.add('trans_off');
                 history.replaceState(null, '', '#about');
-            }, 2400); 
+            }, 2000); 
         }, 500);
     }
 
@@ -232,6 +245,7 @@ function initGnbNav() {
 // 스크롤 진입 애니메이션 (IntersectionObserver)
 // ==============================
 function initScrollAnimations() {
+    // 1. 하위 호환성 체크 (브라우저가 IntersectionObserver를 지원하지 않을 때)
     if (!('IntersectionObserver' in window)) {
         document.querySelectorAll('.animate').forEach(function (el) {
             el.classList.add('animated');
@@ -243,7 +257,13 @@ function initScrollAnimations() {
         return;
     }
 
-    // 일반 .animate 요소: 15% 진입 시 animated 추가
+    // 2. 공통 옵션 설정: 섹션이 뷰포트 바닥에 '닿는 순간' 바로 실행
+    var touchOption = {
+        threshold: 0,      // 요소가 1픽셀이라도 보이면 바로 실행
+        rootMargin: '0px'  // 여백 없이 정확히 뷰포트 경계선 기준
+    };
+
+    // 3. 일반 .animate 요소 관찰자
     var animObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -251,13 +271,13 @@ function initScrollAnimations() {
                 animObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    }, touchOption);
 
     document.querySelectorAll('.animate').forEach(function (el) {
         animObserver.observe(el);
     });
 
-    // s-focus / s-worldwide: 30% 진입 시 on 추가 (차트·지도 애니메이션)
+    // 4. s-focus / s-worldwide 섹션 관찰자
     var sectionObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -265,7 +285,7 @@ function initScrollAnimations() {
                 sectionObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.3 });
+    }, touchOption);
 
     var focusEl = document.querySelector('.s-focus');
     var worldwideEl = document.querySelector('.s-worldwide');
