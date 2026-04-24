@@ -653,9 +653,6 @@ html {
   font-weight: 600;
   white-space: nowrap;
 }
-.s-focus .motion [class^=obj0] .inner img {
-  max-width: 40px;
-}
 .s-focus .motion .obj01 {
   bottom: 100px;
   left: 5%;
@@ -671,43 +668,21 @@ html {
   bottom: 140px;
   left: 25%;
 }
-.s-focus .motion .obj02_1 {
-  bottom: 100px;
-  left: 25%;
-  width: 2px;
-  height: 40px;
-  background: #2C91EC;
-}
 .s-focus .motion .obj03 {
   bottom: 160px;
   left: 45%;
 }
-.s-focus .motion .obj03_1 {
-  bottom: 120px;
-  left: 45%;
-  width: 2px;
-  height: 40px;
-  background: #2C91EC;
-}
 .s-focus .motion .obj04 {
   bottom: 200px;
-  left: 60%;
+  left: 10%;
 }
-.s-focus .motion .obj05 {
-  bottom: 220px;
-  left: 70%;
+.s-focus .motion .obj04 img {
+  transform: rotate(-15deg);
 }
 .s-focus .motion .obj06 {
   bottom: 230px;
   right: 5%;
   font-size: 22px !important;
-}
-.s-focus .motion .obj06_1 {
-  bottom: 180px;
-  right: 8%;
-  width: 2px;
-  height: 50px;
-  background: #2C91EC;
 }
 .s-focus .motion .obj07 {
   position: absolute;
@@ -731,8 +706,7 @@ html {
 }
 .s-focus .motion .obj01_1,
 .s-focus .motion .obj02_1,
-.s-focus .motion .obj03_1,
-.s-focus .motion .obj06_1 {
+.s-focus .motion .obj03_1 {
   height: 0 !important;
 }
 .s-focus.on .motion .obj01_1 {
@@ -758,10 +732,6 @@ html {
 }
 .s-focus.on .motion .obj03 {
   animation: f_scale 0.5s ease-out 0.4s forwards;
-}
-.s-focus.on .motion .obj06_1 {
-  height: 50px !important;
-  transition: height 0.5s 2.2s;
 }
 .s-focus.on .motion .obj06 {
   animation: f_scale 0.5s ease-out 1.7s forwards;

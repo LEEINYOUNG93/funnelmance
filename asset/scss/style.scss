@@ -596,10 +596,6 @@ html {
         font-size: 14px;
         font-weight: 600;
         white-space: nowrap;
-
-        img {
-          max-width: 40px;
-        }
       }
     }
 
@@ -621,49 +617,23 @@ html {
       left: 25%;
     }
 
-    .obj02_1 {
-      bottom: 100px;
-      left: 25%;
-      width: 2px;
-      height: 40px;
-      background: $color-blue;
-    }
-
     .obj03 {
       bottom: 160px;
       left: 45%;
     }
 
-    .obj03_1 {
-      bottom: 120px;
-      left: 45%;
-      width: 2px;
-      height: 40px;
-      background: $color-blue;
-    }
-
     .obj04 {
       bottom: 200px;
-      left: 60%;
-    }
-
-    .obj05 {
-      bottom: 220px;
-      left: 70%;
+      left: 10%;
+      img{
+        transform: rotate(-15deg);
+      }
     }
 
     .obj06 {
       bottom: 230px;
       right: 5%;
       font-size: 22px !important;
-    }
-
-    .obj06_1 {
-      bottom: 180px;
-      right: 8%;
-      width: 2px;
-      height: 50px;
-      background: $color-blue;
     }
 
     .obj07 {
@@ -695,8 +665,7 @@ html {
 
     .obj01_1,
     .obj02_1,
-    .obj03_1,
-    .obj06_1 {
+    .obj03_1 {
       height: 0 !important;
     }
   }
@@ -739,11 +708,6 @@ html {
     }
 
     // 2026년: 라인(2.2s) → 숫자(1.7s)
-    .obj06_1 {
-      height: 50px !important;
-      transition: height 0.5s 2.2s;
-    }
-
     .obj06 {
       animation: f_scale 0.5s ease-out 1.7s forwards;
     }
