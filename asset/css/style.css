@@ -390,8 +390,7 @@ html {
 .basic .bg_figure img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   max-width: none;
 }
 .basic .s_content {
@@ -554,16 +553,48 @@ html {
 .s-about .text-2 {
   font-size: 24px;
   line-height: 1.4;
+  margin-bottom: 80px;
 }
 
 .product_list {
   display: flex;
   align-items: center;
-  gap: 10ox;
+  gap: 10px;
+}
+.product_list > li {
+  width: 25%;
+}
+.product_list > li a {
+  display: block;
+}
+.product_list .img-bx {
+  position: relative;
+  overflow: hidden;
+}
+.product_list .img-bx img {
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+}
+.product_list .img-bx:hover img {
+  transform: scale(1.05);
+}
+.product_list .txt-bx {
+  margin-top: 20px;
+}
+.product_list .txt-bx h4 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.product_list .txt-bx p {
+  font-size: 18px;
+  color: #666;
+  min-height: 100px;
 }
 
 .s-focus {
-  padding: 100px 0 0;
+  padding: 80px 0;
+  background: #000000;
 }
 .s-focus .s_content .text {
   text-align: center;
@@ -575,6 +606,9 @@ html {
   color: #ffffff;
   margin-bottom: 16px;
   line-height: 1.2;
+}
+.s-focus .s_content .text h2 span {
+  color: #2C91EC;
 }
 .s-focus .s_content .text p {
   font-size: 16px;
@@ -691,6 +725,7 @@ html {
 .s-focus .motion .obj01,
 .s-focus .motion .obj02,
 .s-focus .motion .obj03,
+.s-focus .motion .obj04,
 .s-focus .motion .obj06 {
   opacity: 0;
 }
@@ -700,29 +735,36 @@ html {
 .s-focus .motion .obj06_1 {
   height: 0 !important;
 }
-.s-focus.on .motion .obj01,
-.s-focus.on .motion .obj02,
-.s-focus.on .motion .obj03 {
-  animation: f_scale 0.5s ease-out 0.2s forwards;
-}
-.s-focus.on .motion .obj06 {
-  animation: f_scale 0.5s ease-out 0.5s forwards;
-}
 .s-focus.on .motion .obj01_1 {
   height: 40px !important;
   transition: height 0.3s 0.1s;
+}
+.s-focus.on .motion .obj01 {
+  animation: f_scale 0.5s ease-out 0.3s forwards;
+}
+.s-focus.on .motion .obj04 {
+  animation: f_scale 0.5s ease-out 0.5s forwards;
 }
 .s-focus.on .motion .obj02_1 {
   height: 40px !important;
   transition: height 0.3s 0.2s;
 }
+.s-focus.on .motion .obj02 {
+  animation: f_scale 0.5s ease-out 0.4s forwards;
+}
 .s-focus.on .motion .obj03_1 {
   height: 40px !important;
   transition: height 0.3s 0.3s;
 }
+.s-focus.on .motion .obj03 {
+  animation: f_scale 0.5s ease-out 0.5s forwards;
+}
 .s-focus.on .motion .obj06_1 {
   height: 50px !important;
   transition: height 0.3s 0.4s;
+}
+.s-focus.on .motion .obj06 {
+  animation: f_scale 0.5s ease-out 0.6s forwards;
 }
 .s-focus .focus_list {
   display: flex;
@@ -1076,8 +1118,7 @@ html {
 .s-work .work_bg img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   max-width: none;
 }
 .s-work .s_content {
@@ -1378,4 +1419,6 @@ html {
     flex-direction: column;
     align-items: flex-start;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

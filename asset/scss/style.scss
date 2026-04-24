@@ -481,13 +481,47 @@ html {
   .text-2{
     font-size: 24px;
     line-height: 1.4;
+    margin-bottom: 80px;
   }
 }
 
 .product_list{
   display: flex;
   align-items: center;
-  gap: 10ox;
+  gap: 10px;
+  > li{
+    width: 25%;
+    a{
+      display: block;
+    }
+  }
+  .img-bx{
+    position: relative;
+    overflow: hidden;
+    img{
+      transition: all .3s ease-in-out;
+      transform: scale(1);
+    }
+    &:hover{
+      img{
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .txt-bx{
+    margin-top: 20px;
+    h4{
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    p{
+      font-size: 18px;
+      color: #666;
+      min-height: 100px;
+    }
+  }
 }
 
 
@@ -495,7 +529,8 @@ html {
 // s-focus
 // ==============================
 .s-focus {
-  padding: 100px 0 0;
+  padding: 80px 0;
+  background: $color-black;
 
   .s_content .text {
     text-align: center;
@@ -507,6 +542,9 @@ html {
       color: $color-white;
       margin-bottom: 16px;
       line-height: 1.2;
+      span{
+        color: $color-blue;
+      }
     }
 
     p {
@@ -650,6 +688,7 @@ html {
     .obj01,
     .obj02,
     .obj03,
+    .obj04,
     .obj06 {
       opacity: 0;
     }
@@ -662,37 +701,51 @@ html {
     }
   }
 
-  // .on 진입 시 차트 애니메이션
+  // .on 진입 시 차트 애니메이션 (순차적: 라인 → 숫자 → 그래프)
   &.on .motion {
 
-    .obj01,
-    .obj02,
-    .obj03 {
-      animation: f_scale 0.5s ease-out 0.2s forwards;
-    }
-
-    .obj06 {
-      animation: f_scale 0.5s ease-out 0.5s forwards;
-    }
-
+    // 2018년: 라인 → 숫자 → 그래프 순서
     .obj01_1 {
       height: 40px !important;
       transition: height 0.3s 0.1s;
     }
 
+    .obj01 {
+      animation: f_scale 0.5s ease-out 0.3s forwards;
+    }
+
+    .obj04 {
+      animation: f_scale 0.5s ease-out 0.5s forwards;
+    }
+
+    // 2020년: 라인 → 숫자
     .obj02_1 {
       height: 40px !important;
       transition: height 0.3s 0.2s;
     }
 
+    .obj02 {
+      animation: f_scale 0.5s ease-out 0.4s forwards;
+    }
+
+    // 2024년: 라인 → 숫자
     .obj03_1 {
       height: 40px !important;
       transition: height 0.3s 0.3s;
     }
 
+    .obj03 {
+      animation: f_scale 0.5s ease-out 0.5s forwards;
+    }
+
+    // 2026년: 라인 → 숫자 (그래프 없음)
     .obj06_1 {
       height: 50px !important;
       transition: height 0.3s 0.4s;
+    }
+
+    .obj06 {
+      animation: f_scale 0.5s ease-out 0.6s forwards;
     }
   }
 
