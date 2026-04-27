@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // ===== organizational섹션 Hover =====
     organizationalHover();
 
+    // ===== organizational섹션 스와이퍼 =====
+    initFunnelSwiper();
+
     // ===== 클릭 인터랙션 - Capabilities =====
     var capItems = document.querySelectorAll('.cap_list > li');
     capItems.forEach(function (item) {
@@ -145,7 +148,7 @@ function initKvIntro() {
 
                 kvSection.classList.add('trans_off');
                 history.replaceState(null, '', '#about');
-            }, 2000);
+            }, 2200);
         }, 500);
     }
 
@@ -254,7 +257,7 @@ function initScrollAnimations() {
             el.classList.add('animated');
         });
         var sf = document.querySelector('.s-focus');
-        var sw = document.querySelector('.s-worldwide');
+        var sw = document.querySelector('.s-global');
         if (sf) sf.classList.add('on');
         if (sw) sw.classList.add('on');
         return;
@@ -280,7 +283,7 @@ function initScrollAnimations() {
         animObserver.observe(el);
     });
 
-    // 4. s-focus / s-worldwide 섹션 관찰자
+    // 4. s-focus / s-global 섹션 관찰자
     var sectionObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -291,9 +294,9 @@ function initScrollAnimations() {
     }, touchOption);
 
     var focusEl = document.querySelector('.s-focus');
-    var worldwideEl = document.querySelector('.s-worldwide');
+    var globalEl = document.querySelector('.s-global');
     if (focusEl) sectionObserver.observe(focusEl);
-    if (worldwideEl) sectionObserver.observe(worldwideEl);
+    if (globalEl) sectionObserver.observe(globalEl);
 }
 
 function organizationalHover() {
@@ -339,5 +342,37 @@ function organizationalHover() {
         item.addEventListener('mouseleave', () => {
             startAutoPlay();
         });
+    });
+}
+
+function initFunnelSwiper() {
+    const el = document.querySelector('.funnel-company');
+    if (!el) return;
+
+    new Swiper(el, {
+        slidesPerView: 4,
+        spaceBetween: 10,
+        loop: true,
+
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+
+        speed: 600,
+
+        navigation: {
+            nextEl: '.funnel-company .btn-next',
+            prevEl: '.funnel-company .btn-prev',
+        },
+
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            }
+        }
     });
 }

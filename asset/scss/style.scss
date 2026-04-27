@@ -251,6 +251,50 @@ html {
   }
 }
 
+@keyframes arrow-curve-left {
+  0% {
+    transform: translate(-150px, -40px) rotate(-45deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translate(-50px, -80px) rotate(-45deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes arrow-curve-right {
+  0% {
+    transform: translate(150px, 40px) rotate(135deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translate(50px, 80px) rotate(135deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes text-slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 // ==============================
 // 공통 섹션 기본 스타일
@@ -338,7 +382,6 @@ html {
     height: 100%;
   }
 
-  // 인트로 텍스트 레이어 (Converts to the / updated value.)
   .layer01 {
     position: absolute;
     top: calc(50% + 15rem);
@@ -378,7 +421,6 @@ html {
       }
     }
 
-    // 배경 펼침에 따라 좌우로 reveal되는 화이트 레이어
     .text_light {
       position: absolute;
       top: 0;
@@ -419,7 +461,25 @@ html {
       transform: translateX(-50%);
       width: 100vw;
       height: 100%;
-      background: linear-gradient(90deg, rgba(13, 181, 217, 1) 0%, rgba(29, 165, 224, 1) 50%, rgba(49, 130, 246, 1) 100%);
+      //background: linear-gradient(90deg, rgba(13, 181, 217, 1) 0%, rgba(29, 165, 224, 1) 50%, rgba(49, 130, 246, 1) 100%);
+      overflow: hidden;
+    }
+
+    .video-bx {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0;
+
+      .bg-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
     }
 
     .phone-img {
@@ -444,16 +504,14 @@ html {
     .kv_intro_text {
       opacity: 1;
       transform: translateY(0);
-      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
 
-    // 배경 펼침과 동일한 타이밍으로 화이트 레이어 좌우 reveal
     .kv_intro_text .text_light {
       clip-path: inset(0 0% 0 0%);
-      transition: clip-path 0.7s ease 0.5s;
+      transition: clip-path 1s ease 0.7s;
     }
 
-    // text_dark line1: 배경 펼침에 맞춰 transparent + stroke로 전환
     .kv_intro_text .text_dark .line1 {
       color: transparent;
       -webkit-text-fill-color: transparent;
@@ -463,40 +521,38 @@ html {
     .layer02 {
       width: 100%;
       left: 0;
-      transition: width 1.7s ease 0.3s, left 1.7s ease 0.3s;
+      transition: width 2s ease 0.7s, left 2s ease 0.7s;
     }
 
     .layer03 {
       border-top-width: 0;
       border-right-width: 0;
       border-left-width: 0;
-      transition: border-top-width 1.5s 1s ease,
-        border-right-width 1.5s 1s ease,
-        border-left-width 1.5s 1s ease;
+      transition: border-top-width 1.7s 1.2s ease,
+        border-right-width 1.7s 1.2s ease,
+        border-left-width 1.7s 1.2s ease;
+    }
+
+    .video-bx {
+      opacity: 1;
+      transition: opacity 0.7s ease 0.7s;
     }
 
     .phone-img {
       opacity: 1;
       transform: translate(-50%, 0%);
-      transition: opacity 0.5s ease 0.7s, transform 0.5s 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+      transition: opacity 0.7s ease 1.4s, transform 0.7s 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
   }
 }
-
 
 // ==============================
 // s-about
 // ==============================
 .s-about {
-  padding: 140px 0 80px 0;
+  padding: 140px 0 100px 0;
 
-  .s_content {
-    display: flex;
-  }
-
-  .txt-bx {
-    width: 40%;
-  }
+  .s_content {}
 
   .text-1 {
     color: rgba($color-white, 0.7);
@@ -513,12 +569,13 @@ html {
   .product_list {
     display: flex;
     align-items: center;
-    gap: 10px 20px;
+    gap: 10px 30px;
     flex-wrap: wrap;
-    width: 60%;
+    max-width: 50%;
+    margin: 0 auto;
 
     >li {
-      width: calc(50% - 10px);
+      width: calc(50% - 15px);
 
       a {
         display: block;
@@ -565,7 +622,7 @@ html {
 // s-focus
 // ==============================
 .s-focus {
-  padding: 80px 0;
+  padding: 100px 0;
   background: $color-black;
 
   .s_content .text {
@@ -749,9 +806,24 @@ html {
       justify-content: space-between;
       padding: 0 5%;
 
-      p {
-        font-size: 13px;
-        color: rgba($color-white, 0.6);
+      p,
+      span {
+        font-size: 14px;
+        color: rgba($color-white, 0.7);
+        display: block;
+      }
+
+      strong {
+        color: $color-white;
+        font-weight: 500;
+      }
+
+      .fix-txt {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
       }
     }
   }
@@ -832,7 +904,7 @@ html {
 // s-recruitment
 // ==============================
 .s-recruitment {
-  padding: 80px 0;
+  padding: 100px 0;
 
   .text {
     text-align: center;
@@ -910,7 +982,7 @@ html {
 // s-welfare
 // ==============================
 .s-welfare {
-  padding: 80px 0;
+  padding: 100px 0;
   background: #022247;
 
   strong {
@@ -960,10 +1032,10 @@ html {
 // s-organizational 
 // ==============================
 .s-organizational {
-  padding: 80px 0;
+  padding: 100px 0;
   background-image: url(../images/organizational_bg.jpg);
   @include bg-img;
-  height: 100vh;
+  height: fit-content;
   position: relative;
 
   &::before {
@@ -977,14 +1049,38 @@ html {
     z-index: 1;
   }
 
+  .icon-txt {
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: rgba($color-white, 0.1);
+    z-index: 1;
+
+    a {
+      display: block;
+      color: rgba($color-white, 0.1);
+    }
+  }
+
   .s_container {
     position: relative;
     z-index: 5;
     height: 100%;
   }
 
-  .s-title{
-    margin-bottom: 80px;
+  .s-title {
+    margin: 0;
+  }
+
+  .sub-title {
+    margin: 20px 0 80px 0;
+    font-size: 24px;
+    font-weight: bold;
   }
 
   .organizational-list {
@@ -1020,7 +1116,7 @@ html {
       @include d-flex;
       flex-direction: column;
       justify-content: center;
-      height: 300px;
+      height: 240px;
       cursor: pointer;
       background: rgba($color-dark, 0.3);
       border: 1px solid $color-blue;
@@ -1032,25 +1128,25 @@ html {
 
 
       h4 {
-        font-size: 20px;
+        font-size: 18px;
         letter-spacing: 0;
         margin-top: 20px;
       }
     }
 
     .icon-bx {
-      width: 60px;
-      height: 60px;
-      background: $color-white;
+      background: #E8F5FF;
       border-radius: 50%;
+      border: 3px solid $color-blue;
+      width: 80px;
     }
 
     .hidden-bx {
       position: absolute;
       left: 0;
-      top: 300px;
+      top: 240px;
       width: 100%;
-      min-height: 150px;
+      min-height: 100px;
       opacity: 0;
       visibility: hidden;
       transition: all 0.5s ease;
@@ -1064,8 +1160,6 @@ html {
         top: -15px;
         left: 50%;
         transform: translateX(-50%);
-
-        /* 화살표 만들기 */
         width: 0;
         height: 0;
         border-left: 10px solid transparent;
@@ -1075,14 +1169,210 @@ html {
       }
 
       p {
-        font-size: 18px;
+        font-size: 20px;
         color: $color-white;
         text-align: center;
+        line-height: 1.4;
       }
     }
 
     li.organizational_active .hidden-bx {
       display: flex;
+    }
+  }
+
+  .content-box {
+    position: relative;
+    z-index: 5;
+    padding-top: 200px;
+  }
+
+  .youtube-list {
+    display: flex;
+    gap: 20px;
+
+    >div {
+      flex: 1;
+    }
+
+    p {
+      margin-bottom: 10px;
+      color: $color-blue;
+      position: relative;
+      padding-left: 15px;
+
+      &::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: $color-white;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+    }
+
+    .iframe-bx {
+      a {
+        display: block;
+        border: 1px solid $color-blue;
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .funnel-people {
+    background-image: url(../images/funnel-people.jpg);
+    @include bg-img;
+    width: 100%;
+    height: 500px;
+    position: relative;
+    @include d-flex;
+    margin: 20px 0;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: rgba($color-black, 0.35);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    strong {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      display: block;
+      font-size: 50px;
+      font-weight: bold;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+  }
+
+  .funnel-company {
+    .swiper-wrapper {
+      height: auto;
+    }
+
+    .swiper-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      margin-top: 20px;
+      gap: 20px;
+
+      button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: $color-blue;
+        @include d-flex;
+      }
+    }
+  }
+}
+
+
+// ==============================
+// s-global
+// ==============================
+.s-global {
+  padding: 100px 0;
+  background: $color-dark;
+
+  strong {
+    font-weight: bold;
+    display: block;
+    font-size: 24px;
+  }
+
+  .sub-title {
+    color: rgba($color-white, 0.7);
+    margin: 20px 0 0 0;
+  }
+
+  .map-bx {
+    margin-top: 80px;
+    @include d-flex;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    background-image: url(../images/map.png);
+    @include bg-img;
+  }
+
+  .map-marker {
+    position: absolute;
+    z-index: 5;
+
+    &.usa {
+      top: 32%;
+      left: 5%;
+    }
+
+    &.vietnam {
+      top: 45%;
+      right: 12%;
+    }
+
+    .map-arrow {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      flex-shrink: 0;
+      opacity: 0;
+    }
+
+    .marker-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: $color-white;
+      background: $color-blue;
+      padding: 5px 10px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0;
+      gap: 10px;
+
+      .dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: $color-white;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &.on {
+    .map-arrow.usa {
+      animation: arrow-curve-left 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+    }
+
+    .marker-text.usa {
+      animation: text-slideUp 0.6s ease-out 1.5s forwards;
+    }
+
+    .map-arrow.vietnam {
+      animation: arrow-curve-right 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards;
+    }
+
+    .marker-text.vietnam {
+      animation: text-slideUp 0.6s ease-out 1.8s forwards;
     }
   }
 }
