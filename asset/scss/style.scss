@@ -881,6 +881,10 @@ html {
       p {
         font-size: 13px;
         color: rgba($color-white, 0.7);
+
+        @include desktop {
+          font-size: 11px;
+        }
       }
     }
 
@@ -892,6 +896,10 @@ html {
         font-size: 14px;
         font-weight: 600;
         white-space: nowrap;
+
+        @include desktop {
+          font-size: 12px;
+        }
       }
     }
 
@@ -1052,6 +1060,10 @@ html {
         font-size: 14px;
         color: rgba($color-white, 0.7);
         display: block;
+
+        @include desktop {
+          font-size: 12px;
+        }
 
         @include mobile {
           font-size: 10px;

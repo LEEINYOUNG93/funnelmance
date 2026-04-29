@@ -13,7 +13,13 @@
     opacity: 0;
     transition: opacity 0.5s;
 
-    &.on { opacity: 1; }
+    @include mobile {
+        height: 60px;
+    }
+
+    &.on {
+        opacity: 1;
+    }
 
     .inner {
         max-width: $container-max;
@@ -24,11 +30,24 @@
         align-items: center;
         justify-content: space-between;
         position: relative;
+
+        @include desktop {
+            padding: 0 20px;
+        }
     }
 
     .logo {
-        a { display: block; }
-        img { height: 28px; width: auto; }
+        a {
+            display: block;
+        }
+
+        img {
+            height: 28px;
+            width: auto;
+            @include mobile{
+                height: 20px;
+            }
+        }
     }
 }
 
@@ -47,7 +66,8 @@
         transition: color .3s ease-in-out;
         text-transform: uppercase;
 
-        &:hover, &.active {
+        &:hover,
+        &.active {
             color: $color-text;
             font-weight: 600;
         }
@@ -56,11 +76,93 @@
 
 // 반응형: 태블릿 이하에서 GNB 간격 축소
 @media all and (max-width: 1024px) {
-    .header_gnb { gap: 16px; }
-    .header_gnb .gnb_item { font-size: 12px; }
+    .header_gnb {
+        gap: 16px;
+    }
+
+    .header_gnb .gnb_item {
+        font-size: 12px;
+    }
+}
+
+// ==============================
+// 햄버거 메뉴 버튼
+// ==============================
+.header_burger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px;
+
+    span {
+        width: 24px;
+        height: 2px;
+        background: $color-text;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        display: block;
+    }
+
+    &.active {
+        span:nth-child(1) {
+            transform: rotate(45deg) translateY(11px);
+        }
+
+        span:nth-child(2) {
+            opacity: 0;
+        }
+
+        span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-11px);
+        }
+    }
+}
+
+// ==============================
+// 사이드 메뉴 스타일
+// ==============================
+.header_gnb {
+    @include mobile {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: $color-white;
+        flex-direction: column;
+        gap: 0;
+        padding: 20px 0;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+        border-top: 1px solid $color-border;
+        overflow-y: auto;
+        align-items: flex-start;
+
+        &.active {
+            transform: translateX(0);
+        }
+
+        .gnb_item {
+            width: 100%;
+            padding: 15px 20px;
+            border-bottom: 1px solid $color-border;
+            font-size: 14px;
+
+            &:hover,
+            &.active {
+                background: $color-bg-light;
+            }
+        }
+    }
 }
 
 // 반응형: 모바일에서 GNB 숨김
 @media all and (max-width: 768px) {
-    .header_gnb { display: none; }
+    .header_burger {
+        display: flex;
+    }
 }

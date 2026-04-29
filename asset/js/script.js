@@ -174,12 +174,6 @@ function initKvIntro() {
 
     if (!kvSection || !header || !aboutSection) return;
 
-    if (window.innerWidth <= 768) {
-        kvSection.classList.add('on', 'trans_off');
-        header.classList.add('on');
-        return;
-    }
-
     // 초기 상태 잠금
     document.body.style.overflow = 'hidden';
 
