@@ -20,25 +20,23 @@ document.addEventListener('DOMContentLoaded', function () {
     initFunnelSwiper();
 
     // ===== 클릭 인터랙션 - Capabilities =====
-    var capItems = document.querySelectorAll('.cap_list > li');
-    capItems.forEach(function (item) {
-        var link = item.querySelector('.cap_link');
-        if (!link) return;
-        link.addEventListener('click', function (e) {
+    const capItems = document.querySelectorAll('.cap_list > li');
+    capItems.forEach((item) => {
+        const link = item.querySelector('.cap_link');
+        const btnClose = item.querySelector('.btn_close');
+
+        link?.addEventListener('click', (e) => {
             e.preventDefault();
-            capItems.forEach(function (el) {
-                el.classList.remove('cap_active');
-                var hover = el.querySelector('.hover');
-                if (hover) hover.style.display = 'none';
-            });
+            capItems.forEach(el => el.classList.remove('cap_active'));
             item.classList.add('cap_active');
-            var hover = item.querySelector('.hover');
-            if (hover) hover.style.display = 'block';
         });
-        var btnClose = item.querySelector('.btn_close');
-        if (btnClose) {
-            btnClose.addEventListener('click', function (e) { e.preventDefault(); });
-        }
+
+        // 닫기 버튼을 눌렀을 때 닫히는 로직이 필요하다면 추가
+        btnClose?.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation(); // 이벤트 전파 방지
+            item.classList.remove('cap_active');
+        });
     });
 
     // ===== 클릭 인터랙션 - Organizational =====
@@ -79,6 +77,53 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // ===== Header 스크롤 숨김/보임 =====
+    var header = document.querySelector('.header');
+    var lastScrollTop = 0;
+    var headerHidden = false;
+    if (header) {
+        window.addEventListener('scroll', function () {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // 스크롤 내릴 때 header 숨기기
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                if (!headerHidden) {
+                    header.style.transform = 'translateY(-100%)';
+                    headerHidden = true;
+                }
+            }
+            // 스크롤 올릴 때 header 보이기
+            else {
+                if (headerHidden) {
+                    header.style.transform = 'translateY(0)';
+                    headerHidden = false;
+                }
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+        });
+        header.style.transition = 'transform 0.3s ease';
+    }
+
+    // ===== 햄버거 메뉴 토글 =====
+    var hamburgerBtn = document.querySelector('.header_burger');
+    var headerGnb = document.querySelector('.header_gnb');
+    if (hamburgerBtn && headerGnb) {
+        // 햄버거 버튼 클릭 시 메뉴 토글
+        hamburgerBtn.addEventListener('click', function () {
+            hamburgerBtn.classList.toggle('active');
+            headerGnb.classList.toggle('active');
+        });
+
+        // GNB 메뉴 아이템 클릭 시 메뉴 닫기
+        var gnbItems = document.querySelectorAll('.header_gnb .gnb_item');
+        gnbItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+                hamburgerBtn.classList.remove('active');
+                headerGnb.classList.remove('active');
+            });
+        });
+    }
+
     // ===== TOP 버튼 =====
     var topBtn = document.querySelector('.top a');
     if (topBtn) {
@@ -103,6 +148,14 @@ document.addEventListener('DOMContentLoaded', function () {
         topEl.style.transition = 'opacity 0.3s, visibility 0.3s';
     }
 
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 1500,
+            easing: 'ease-out-back',
+            once: true,
+            offset: 100,
+        });
+    }
 });
 
 
@@ -300,6 +353,11 @@ function initScrollAnimations() {
 }
 
 function organizationalHover() {
+    // 모바일(767px 이하)에서는 실행하지 않음
+    if (window.innerWidth <= 767) {
+        return;
+    }
+
     const listItems = document.querySelectorAll('.organizational-list > li');
     let currentIndex = 0;
     let autoPlay = null;
@@ -350,7 +408,7 @@ function initFunnelSwiper() {
     if (!el) return;
 
     new Swiper(el, {
-        slidesPerView: 4,
+        slidesPerView: 2,
         spaceBetween: 10,
         loop: true,
 
@@ -367,11 +425,11 @@ function initFunnelSwiper() {
         },
 
         breakpoints: {
-            768: {
-                slidesPerView: 2,
-            },
             1024: {
                 slidesPerView: 3,
+            },
+            1440: {
+                slidesPerView: 4,
             }
         }
     });
