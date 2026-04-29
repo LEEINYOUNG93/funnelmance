@@ -95,7 +95,10 @@
     cursor: pointer;
     background: none;
     border: none;
-    padding: 8px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
 
     span {
         width: 24px;
@@ -107,6 +110,8 @@
     }
 
     &.active {
+        position: fixed;
+
         span:nth-child(1) {
             transform: rotate(45deg) translateY(11px);
         }
@@ -134,7 +139,6 @@
         background: $color-white;
         flex-direction: column;
         gap: 0;
-        padding: 20px 0;
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         z-index: 999;

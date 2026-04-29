@@ -560,6 +560,10 @@ html {
         color: transparent;
         -webkit-text-fill-color: transparent;
         -webkit-text-stroke: 2px $color-white;
+
+        @include mobile {
+          -webkit-text-stroke: 1px $color-white;
+        }
       }
 
       .line2 {
