@@ -11,11 +11,17 @@
         max-width: $container-max;
         margin: 0 auto;
         padding: 40px;
+        @include mobile{
+            padding: 20px;
+        }
     }
 
     .footer-logo{
         width: 200px;
         margin-bottom: 40px;
+        @include mobile{
+            width: 160px;
+        }
     }
 
     .footer-info{
@@ -37,6 +43,9 @@
     .copyright {
         font-size: 12px;
         color: $color-gray;
+         @include mobile{
+            font-size: 10px;
+        }
     }
 }
 
@@ -55,13 +64,23 @@
         height: 60px;
         border-radius: 50%;
         background: $color-blue;
+        @include mobile{
+            width: 44px;
+            height: 44px;
+            gap: 2px;
+        }
     }
 
     i{       
-        
+        @include mobile{
+            font-size: 12px;
+        }
     }
 
     span{
         font-size: 14px;
+        @include mobile{
+            font-size: 12px;
+        }
     }
 }

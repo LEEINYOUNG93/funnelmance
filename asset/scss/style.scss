@@ -405,7 +405,8 @@ html {
   margin: 0 auto;
   padding: 0 $container-padding;
   width: 100%;
-  @include desktop{
+
+  @include desktop {
     padding: 0 20px;
   }
 }
@@ -562,7 +563,7 @@ html {
         -webkit-text-stroke: 2px $color-white;
 
         @include mobile {
-          -webkit-text-stroke: 1px $color-white;
+          -webkit-text-stroke: 0.5px $color-white;
         }
       }
 
@@ -659,8 +660,8 @@ html {
       border-right-width: 0;
       border-left-width: 0;
       transition: border-top-width 1.7s 1.2s ease,
-      border-right-width 1.7s 1.2s ease,
-      border-left-width 1.7s 1.2s ease;
+        border-right-width 1.7s 1.2s ease,
+        border-left-width 1.7s 1.2s ease;
     }
 
     .video-bx {
@@ -695,9 +696,13 @@ html {
     @include desktop {
       font-size: 18px;
     }
-    
-    @include mobile{
+
+    @include mobile {
       font-size: 16px;
+    }
+
+    @include iphone {
+      font-size: 14px;
     }
   }
 
@@ -711,8 +716,12 @@ html {
       margin-bottom: 40px;
     }
 
-    @include mobile{
+    @include mobile {
       font-size: 18px;
+    }
+
+    @include iphone {
+      font-size: 16px;
     }
   }
 
@@ -736,7 +745,7 @@ html {
         width: calc(50% - 10px);
       }
 
-      @include mobile{
+      @include mobile {
         width: 100%;
       }
 
@@ -776,7 +785,7 @@ html {
           font-size: 20px;
         }
 
-        @include mobile{
+        @include mobile {
           font-size: 16px;
         }
       }
@@ -791,7 +800,7 @@ html {
           min-height: 80px;
         }
 
-        @include mobile{
+        @include mobile {
           font-size: 14px;
           min-height: unset;
           padding-bottom: 20px;
@@ -856,6 +865,8 @@ html {
 
     @include mobile {
       background-image: url(../images/graph_bg.jpg);
+      height: fit-content;
+      padding: 100px 0;
       @include bg-img;
     }
 
@@ -943,6 +954,11 @@ html {
         font-size: 16px;
       }
 
+      @include mobile {
+        width: 60px;
+        height: 60px;
+      }
+
       &::before,
       &::after {
         position: absolute;
@@ -984,7 +1000,7 @@ html {
       left: calc(5% - 30px);
 
       @include desktop {
-        bottom: 70px;
+        bottom: 90px;
       }
 
       @include mobile {
@@ -1014,12 +1030,26 @@ html {
       bottom: 200px;
       left: 10%;
 
+      @include desktop {
+        bottom: 175px;
+      }
+
+      @include mobile {
+        bottom: 150px;
+        left: 14%;
+      }
+
       img {
         transform: rotate(-15deg);
 
         @include desktop {
           width: 85%;
-          left: 20%;
+          transform: rotate(-12deg);
+        }
+
+        @include mobile {
+          width: 75%;
+          transform: rotate(-15deg);
         }
       }
     }
@@ -1034,7 +1064,8 @@ html {
       }
 
       @include mobile {
-        right: calc(5% - 35px);
+        right: calc(5% - 19.5px);
+        bottom: 180px;
       }
     }
 
@@ -1047,6 +1078,7 @@ html {
 
       @include desktop {
         height: 120px;
+        right: calc(5% + 10px);
       }
     }
 
@@ -1059,6 +1091,10 @@ html {
       justify-content: space-between;
       padding: 0 5%;
 
+      @include mobile {
+        display: none;
+      }
+
       p,
       span {
         font-size: 14px;
@@ -1070,7 +1106,6 @@ html {
         }
 
         @include mobile {
-          font-size: 10px;
           letter-spacing: 0;
         }
       }
@@ -1090,6 +1125,10 @@ html {
         left: 50%;
         transform: translateX(-50%);
         z-index: 1;
+
+        @include mobile {
+          position: unset;
+        }
       }
     }
   }
@@ -1140,6 +1179,10 @@ html {
       @include desktop {
         height: 160px !important;
       }
+
+      @include mobile {
+        height: 120px !important;
+      }
     }
   }
 
@@ -1148,7 +1191,7 @@ html {
     border-top: 1px solid rgba($color-white, 0.2);
     margin-top: 40px;
 
-    @include desktop {
+    @include mobile {
       flex-direction: column;
     }
 
@@ -1244,15 +1287,16 @@ html {
         font-size: 16px;
       }
 
-      @include mobile{
+      @include mobile {
         font-size: 14px;
       }
 
-      .m-block{
+      .m-block {
         display: none;
-         @include mobile{
-        display: block;
-      }
+
+        @include mobile {
+          display: block;
+        }
       }
     }
   }
@@ -1278,6 +1322,7 @@ html {
         @include desktop {
           display: none;
         }
+
         @include mobile {
           display: block;
         }
@@ -1371,28 +1416,42 @@ html {
     font-weight: bold;
     display: block;
     font-size: 24px;
+
     @include desktop {
       font-size: 20px;
     }
+
     @include mobile {
       font-size: 18px;
     }
-    br{
+
+    br {
       display: none;
-       @include mobile {
-    display: block;
+
+      @include mobile {
+        display: block;
+      }
     }
+
+    @include iphone {
+      font-size: 16px;
     }
   }
 
   .sub-title {
     color: rgba($color-white, 0.7);
     margin: 10px 0 120px 0;
-    @include desktop{
+
+    @include desktop {
       margin: 10px 0 80px 0;
     }
-    @include mobile{
+
+    @include mobile {
       margin: 10px 0 40px 0;
+    }
+
+    @include iphone {
+      font-size: 14px;
     }
   }
 
@@ -1426,9 +1485,10 @@ html {
       margin: 10px 0 20px 0;
       font-weight: bold;
       font-size: 20px;
-       @include desktop {
+
+      @include desktop {
         font-size: 18px;
-         margin: 20px 0 10px 0;
+        margin: 20px 0 10px 0;
       }
     }
 
@@ -1508,7 +1568,7 @@ html {
       margin: 20px 0 40px 0;
     }
 
-    @include mobile{
+    @include mobile {
       font-size: 18px;
     }
   }
@@ -1526,7 +1586,8 @@ html {
       cursor: pointer;
       transition: all .3s ease-in-out;
       opacity: 0.5;
-      @include mobile{
+
+      @include mobile {
         opacity: 1;
       }
 
@@ -1635,10 +1696,13 @@ html {
           font-size: 18px;
         }
 
-        @include mobile{
+        @include mobile {
           font-size: 14px;
           letter-spacing: 0;
-          padding: 0 10px;
+        }
+
+        @include iphone {
+          font-size: 12px;
         }
       }
     }
@@ -1762,6 +1826,10 @@ html {
       @include mobile {
         font-size: 24px;
       }
+
+      @include iphone {
+        font-size: 20px;
+      }
     }
   }
 
@@ -1826,6 +1894,10 @@ html {
     @include mobile {
       font-size: 18px;
     }
+
+    @include iphone {
+      font-size: 16px;
+    }
   }
 
   .sub-title {
@@ -1835,6 +1907,14 @@ html {
     @include desktop {
       font-size: 14px;
       margin: 10px 0 0 0;
+    }
+
+    br {
+      display: none;
+
+      @include iphone {
+        display: block;
+      }
     }
   }
 

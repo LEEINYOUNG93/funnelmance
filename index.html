@@ -16,11 +16,13 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon" sizes="16x16">
     <link href="https://fonts.cdnfonts.com/css/gmarket-sans" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
 <body>
@@ -32,12 +34,18 @@
                 <h1 class="logo">
                     <a href="./index.html"><img src="./asset/images/funnelmance_logo.png" alt="주식회사퍼널먼스"></a>
                 </h1>
+                <button class="header_burger" aria-label="메뉴 열기">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <nav class="header_gnb">
                     <a href="#about" class="gnb_item active" data-section="about">About</a>
                     <a href="#s-focus" class="gnb_item" data-section="s-focus">Funnel</a>
                     <a href="#s-recruitment" class="gnb_item" data-section="s-recruitment">Recruitment</a>
                     <a href="#s-welfare" class="gnb_item" data-section="s-welfare">Welfare</a>
                     <a href="#s-organizational" class="gnb_item" data-section="s-organizational">Culture</a>
+                    <a href="#s-global" class="gnb_item" data-section="s-organizational">Global</a>
                 </nav>
             </div>
         </header>
@@ -65,9 +73,9 @@
                                 </div>
                                 <div class="layer02">
                                     <div class="extend">
-                                        <div class="phone-img">
+                                        <!--<div class="phone-img">
                                             <img src="./asset/images/phone.png" alt="phone-image">
-                                        </div>
+                                        </div>-->
                                         <div class="video-bx">
                                             <video class="bg-video" autoplay muted loop playsinline>
                                                 <source src="./asset/images/intro-bg.mp4" type="video/mp4">
@@ -98,21 +106,21 @@
                                     </div>
 
                                     <ul class="product_list">
-                                        <li class="product_item animate e-fadeInUp" style="animation-delay: 0.2s;">
-                                            <a href="javascript:void(0);">
-                                                <div class="img-bx">
-                                                    <img src="./asset/images/product_3.jpg" alt="티제로">
-                                                </div>
-                                                <div class="txt-bx">
-                                                    <h4 class="product-title">티제로</h4>
-                                                    <p class="product-desc">
-                                                        "런칭 30일만에 최대 일매출<br>
-                                                        4000만원 달성"
-                                                    </p>
-                                                </div>
+                                        <li class="product_item" data-aos="fade-up>
+                                            <a href=" javascript:void(0);">
+                                            <div class="img-bx">
+                                                <img src="./asset/images/product_3.jpg" alt="티제로">
+                                            </div>
+                                            <div class="txt-bx">
+                                                <h4 class="product-title">티제로</h4>
+                                                <p class="product-desc">
+                                                    "런칭 30일만에 최대 일매출<br>
+                                                    4000만원 달성"
+                                                </p>
+                                            </div>
                                             </a>
                                         </li>
-                                        <li class="product_item animate e-fadeInUp" style="animation-delay: 0.2s;">
+                                        <li class="product_item" data-aos="fade-up">
                                             <a href="javascript:void(0);">
                                                 <div class="img-bx">
                                                     <img src="./asset/images/product_2.jpg" alt="마그네핏 패치">
@@ -126,7 +134,7 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class="product_item animate e-fadeInUp" style="animation-delay: 0.2s;">
+                                        <li class="product_item" data-aos="fade-up">
                                             <a href="javascript:void(0);">
                                                 <div class="img-bx">
                                                     <img src="./asset/images/product_1.jpg" alt="아이틱스">
@@ -140,7 +148,7 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class="product_item animate e-fadeInUp" style="animation-delay: 0.2s;">
+                                        <li class="product_item" data-aos="fade-up">
                                             <a href="javascript:void(0);">
                                                 <div class="img-bx">
                                                     <img src="./asset/images/product_4.jpg" alt="허밍테라피">
@@ -208,7 +216,7 @@
                                                 <p><strong>2020</strong></p>
                                                 <p><strong>2024</strong></p>
                                                 <p><strong>2026</strong><br>Word Wide Growth</p>
-                                                <span class="fix-txt">Performance marketing & e
+                                                <span class="fix-txt">Performance marketing & e-
                                                     commerce</span>
                                             </div>
                                         </div>
@@ -234,15 +242,15 @@
                         <div class="s_container">
                             <div class="base">
                                 <div class="s_content">
-                                    <div class="text animate e-fadeInUp">
+                                    <div class="text" data-aos="fade-up">
                                         <h3 class="s-title">recruitment</h3>
                                         <p class="sub-title">퍼널먼스의 채용 인재상</p>
                                         <p class="desc">경험이나 스펙은 중요하지 않습니다.<br>
-                                            성장에 대한 열정만 있다면, 최고의 전문가가 되도록 지원합니다.</p>
+                                            성장에 대한 열정만 있다면,<br class="m-block"> 최고의 전문가가 되도록 지원합니다.</p>
                                     </div>
                                     <div>
                                         <ul class="recruitment-list">
-                                            <li class="animate e-fadeInUp" style="animation-delay: 0.2s;">
+                                            <li class="animate" data-aos="fade-up">
                                                 <div class="img-bx">
                                                     <img src="./asset/images/recruitment_1.jpg" alt="도전정신">
                                                 </div>
@@ -252,17 +260,17 @@
                                                     <p>틀에 박힌 업무 방식을 벗어나<br>새로운 시도를 즐기는 사람을 선호해요</p>
                                                 </div>
                                             </li>
-                                            <li class="animate e-fadeInUp" style="animation-delay: 0.2s;">
+                                            <li class="animate" data-aos="fade-up">
                                                 <div class="img-bx">
                                                     <img src="./asset/images/recruitment_2.jpg" alt="근거있는 창의성">
                                                 </div>
                                                 <div class="txt-bx">
                                                     <h4 class="title">근거있는 창의성</h4>
-                                                    <strong>데이터 분석과 창의적인 콘텐츠 제작에<br>흥미를 느끼는 사람</strong>
-                                                    <p>데이터에 근거하지 않고, 콘텐츠 자체만의<br>작품성, 예술성을 추구하는 사람은 정중히 거절합니다</p>
+                                                    <strong>데이터 분석과 창의적인 콘텐츠 제작에<br> 흥미를 느끼는 사람</strong>
+                                                    <p>데이터에 근거하지 않고, 콘텐츠 자체만의<br> 작품성, 예술성을 추구하는 사람은 정중히 거절합니다</p>
                                                 </div>
                                             </li>
-                                            <li class="animate e-fadeInUp" style="animation-delay: 0.2s;">
+                                            <li class="animate" data-aos="fade-up">
                                                 <div class="img-bx">
                                                     <img src="./asset/images/recruitment_3.jpg" alt="멀티 플레이어">
                                                 </div>
@@ -288,41 +296,43 @@
                         <div class="s_container">
                             <div class="base">
                                 <div class="s_content">
-                                    <h3 class="s-title animate e-fadeInUp">welfare</h3>
-                                    <strong class="animate e-fadeInUp">100평 규모의 퍼널먼스
-                                        업무 공간을 소개합니다</strong>
-                                    <p class="sub-title animate e-fadeInUp">워라밸과 개인의 성장을 모두 지원하는 퍼널먼스에서 최고의 퍼포먼스를 만들어
-                                        보세요</p>
-                                    <ul class="welfare-list animate e-fadeInUp" style="animation-delay: 0.2s;">
-                                        <li>
+                                    <div class="text" data-aos="fade-up">
+                                        <h3 class="s-title">welfare</h3>
+                                        <strong>100평 규모의 퍼널먼스<br>
+                                            업무 공간을 소개합니다</strong>
+                                        <p class="sub-title">워라밸과 개인의 성장을 모두 지원하는 퍼널먼스에서 최고의 퍼포먼스를 만들어
+                                            보세요</p>
+                                    </div>
+                                    <ul class="welfare-list">
+                                        <li data-aos="fade-up">
                                             <img src="./asset/images/benefit_1.svg" alt="건강검진비">
                                             <h4>건강검진비</h4>
                                             <p>구성원들의 건강한 삶을 위해<br>
                                                 건강검진을 지원합니다.</p>
                                         </li>
-                                        <li>
+                                        <li data-aos="fade-up">
                                             <img src="./asset/images/benefit_2.svg" alt="금요일조기퇴근">
                                             <h4>금요일 조기퇴근</h4>
                                             <p>금요일은 한 시간<br>일찍 퇴근해요</p>
                                         </li>
-                                        <li>
+                                        <li data-aos="fade-up">
                                             <img src="./asset/images/benefit_3.svg" alt="교육비지원">
                                             <h4>도서·교육비 지원</h4>
                                             <p>업무 생산성 극대화를 위해<br>
                                                 교육비를 제공해요. </p>
                                         </li>
-                                        <li>
+                                        <li data-aos="fade-up">
                                             <img src="./asset/images/benefit_4.svg" alt="명절선물">
                                             <h4>명절선물</h4>
                                             <p>명절 및 각종 경조사를<br>챙겨드립니다.</p>
                                         </li>
-                                        <li>
+                                        <li data-aos="fade-up">
                                             <img src="./asset/images/benefit_5.svg" alt="점심시간">
                                             <h4>점심시간</h4>
                                             <p>자율적이고 여유로운<br>점심시간 80분 제공
                                             </p>
                                         </li>
-                                        <li>
+                                        <li data-aos="fade-up">
                                             <img src="./asset/images/benefit_6.svg" alt="탕비실">
                                             <h4>탕비실</h4>
                                             <p>커피와 상시로 음료 및 간식을<br> 무한 제공합니다.</p>
@@ -341,9 +351,11 @@
                         <div class="s_container text-center">
                             <div class="base">
                                 <div class="s_content">
-                                    <h3 class="s-title animate e-fadeInUp">organizational</h3>
-                                    <p class="sub-title animate e-fadeInUp">"퍼널먼스는 이렇게 일해요"</p>
-                                    <ul class="organizational-list animate e-fadeInUp">
+                                    <div class="text" data-aos="fade-up">
+                                        <h3 class="s-title">organizational</h3>
+                                        <p class="sub-title">"퍼널먼스는 이렇게 일해요"</p>
+                                    </div>
+                                    <ul class="organizational-list">
                                         <li>
                                             <div class="top-bx">
                                                 <div class="icon-bx">
@@ -399,8 +411,8 @@
                     </div>
 
                     <div class="content-box s_container">
-                        <div class="youtube-list animate e-fadeInUp">
-                            <div class="youtube-item">
+                        <div class="youtube-list">
+                            <div class="youtube-item" data-aos="fade-up">
                                 <p>Funnelmance Interview</p>
                                 <div class="iframe-bx">
                                     <a href="https://youtu.be/iPOBvdHw-fs" target="_blank">
@@ -410,7 +422,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="youtube-item">
+                            <div class="youtube-item" data-aos="fade-up">
                                 <p>Funnelmance Workshop</p>
                                 <div class="iframe-bx">
                                     <a href="https://youtu.be/hFLQFV_Flhw" target="_blank">
@@ -423,7 +435,7 @@
                         </div>
 
                         <div class="funnel-people">
-                            <strong class="animate e-fadeInUp" style="animation-delay: 0.2s;">수평적인 조직문화 속에서<br>젊고 열정적인
+                            <strong data-aos="fade-up">수평적인 조직문화 속에서<br>젊고 열정적인
                                 동료들과<br>함께 성장합니다</strong>
                         </div>
 
@@ -457,11 +469,11 @@
                             </div>
                             <div class="swiper-btn">
                                 <button class="btn-prev">
-                                <i class="xi-angle-left"></i>
-                            </button>
-                            <button class="btn-next">
-                                <i class="xi-angle-right"></i>
-                            </button>
+                                    <i class="xi-angle-left"></i>
+                                </button>
+                                <button class="btn-next">
+                                    <i class="xi-angle-right"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -473,20 +485,28 @@
                     <article>
                         <div class="s_container">
                             <div class="base">
-                                <div class="s_content">
-                                    <h3 class="s-title animate e-fadeInUp">global</h3>
-                                    <strong class="animate e-fadeInUp">한국을 넘어 글로벌 시장으로 도약합니다.</strong>
-                                    <p class="sub-title animate e-fadeInUp"> 미국과 베트남을 중심으로 새로운 기회를 만들어갑니다.</p>                                   
+                                <div class="s_content" data-aos="fade-up">
+                                    <h3 class="s-title">global</h3>
+                                    <strong>한국을 넘어 글로벌 시장으로 도약합니다.</strong>
+                                    <p class="sub-title">미국과 베트남을 중심으로<br> 새로운 기회를 만들어갑니다.</p>
                                 </div>
 
                                 <div class="map-bx">
-                                    <div class="map-marker usa">
-                                        <img src="./asset/images/map-arrow-left.png" alt="화살표" class="map-arrow usa">
-                                        <p class="marker-text usa"><span class="dot"></span>USA</p>
+                                    <div class="map-bg">
+                                        <img src="./asset/images/map-bg.jpg" alt="세계지도" class="pc-block">
+                                        <img src="./asset/images/lg-map-bg.jpg" alt="세계지도" class="lg-block">
+                                        <img src="./asset/images/mobile-map-bg.jpg" alt="세계지도" class="m-block">
                                     </div>
-                                    <div class="map-marker vietnam">
-                                        <img src="./asset/images/map-arrow-right.png" alt="화살표" class="map-arrow vietnam">
-                                        <p class="marker-text vietnam"><span class="dot"></span>Vietnam</p>
+                                    <div class="map-location">
+                                        <div class="map-marker seoul">
+                                            <p class="marker-text seoul"></span>SEOUL</p>
+                                        </div>
+                                        <div class="map-marker usa">
+                                            <p class="marker-text usa"></span>USA</p>
+                                        </div>
+                                        <div class="map-marker vietnam">
+                                            <p class="marker-text vietnam"></span>Vietnam</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

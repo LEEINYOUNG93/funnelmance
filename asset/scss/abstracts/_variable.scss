@@ -7,13 +7,19 @@ $main-color: #2C91EC;
 $sub-color: #fff;
 $color-point: #f5ff00;
 
-$iphone: 319px;
+$iphone: 320px;
+$phone: 575px;
 $mobile: 767px;
 $tablet: 1023px;
-$desktop: 1439px;
+$desktop: 1200px;
+$lg-desktop: 1600px;
 
 @mixin iphone {
     @media (max-width: $iphone) { @content; }
+}
+
+@mixin phone {
+    @media (max-width: $phone) { @content; }
 }
 @mixin mobile {
     @media (max-width: $mobile) { @content; }
@@ -22,6 +28,9 @@ $desktop: 1439px;
     @media (max-width: $tablet) { @content; }
 }
 @mixin desktop {
+    @media (max-width: $desktop) { @content; }
+}
+@mixin lg-desktop {
     @media (max-width: $desktop) { @content; }
 }
 
@@ -40,6 +49,6 @@ $color-orange: #cc4400;
 $color-white: #ffffff;
 $color-black: #000000;
 
-$header-height: 60px;
+$header-height: 80px;
 $container-max: 1600px;
 $container-padding: 40px;

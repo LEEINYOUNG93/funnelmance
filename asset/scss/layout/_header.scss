@@ -111,6 +111,7 @@
 
     &.active {
         position: fixed;
+        right: 10px;
 
         span:nth-child(1) {
             transform: rotate(45deg) translateY(11px);
@@ -135,7 +136,7 @@
         top: 60px;
         left: 0;
         width: 100%;
-        height: calc(100vh - 60px);
+        height: 100vh;
         background: $color-white;
         flex-direction: column;
         gap: 0;
@@ -152,9 +153,10 @@
 
         .gnb_item {
             width: 100%;
-            padding: 15px 20px;
+            padding: 10px 20px;
             border-bottom: 1px solid $color-border;
-            font-size: 14px;
+            font-size: 12px;
+            letter-spacing: 0;
 
             &:hover,
             &.active {
