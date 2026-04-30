@@ -112,6 +112,13 @@ document.addEventListener('DOMContentLoaded', function () {
         hamburgerBtn.addEventListener('click', function () {
             hamburgerBtn.classList.toggle('active');
             headerGnb.classList.toggle('active');
+
+            // 메뉴 열림/닫힘에 따라 스크롤 제어
+            if (hamburgerBtn.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         });
 
         // GNB 메뉴 아이템 클릭 시 메뉴 닫기
@@ -120,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
             item.addEventListener('click', function () {
                 hamburgerBtn.classList.remove('active');
                 headerGnb.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
     }
