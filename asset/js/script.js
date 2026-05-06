@@ -2,13 +2,13 @@
 // Funnelmance - Main Script
 // ==============================
 
+var globalMapLines = [];
+var isMapReady = false;
+
 document.addEventListener('DOMContentLoaded', function () {
 
     // ===== 인트로 애니메이션 =====
     initKvIntro();
-
-    // ===== 스크롤 진입 애니메이션 =====
-    initScrollAnimations();
 
     // ===== GNB 섹션 네비게이션 =====
     initGnbNav();
@@ -18,6 +18,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ===== organizational섹션 스와이퍼 =====
     initFunnelSwiper();
+
+    // ===== 세계 지도 초기화 =====
+    initGlobalMap();
+
+    // ===== 스크롤 진입 애니메이션 (지도 초기화 후) =====
+    // 짧은 지연을 통해 지도 초기화가 진행되도록 함
+    setTimeout(initScrollAnimations, 100);
+    
 
     // ===== 클릭 인터랙션 - Capabilities =====
     const capItems = document.querySelectorAll('.cap_list > li');
@@ -314,7 +322,10 @@ function initScrollAnimations() {
         var sf = document.querySelector('.s-focus');
         var sw = document.querySelector('.s-global');
         if (sf) sf.classList.add('on');
-        if (sw) sw.classList.add('on');
+        if (sw) {
+            sw.classList.add('on');
+            playMapAnimation(); // 하위 호환성용 실행
+        }
         return;
     }
 
@@ -343,6 +354,20 @@ function initScrollAnimations() {
         entries.forEach(function (entry) {
             if (entry.isIntersecting) {
                 entry.target.classList.add('on');
+
+                // s-global 섹션에 진입하면 지도 애니메이션 실행
+                if (entry.target.classList.contains('s-global')) {
+                    // globalMapLines가 준비될 때까지 재시도
+                    var retryCount = 0;
+                    var retryInterval = setInterval(function() {
+                        if (globalMapLines.length > 0 || retryCount > 50) {
+                            playMapAnimation();
+                            clearInterval(retryInterval);
+                        }
+                        retryCount++;
+                    }, 10);
+                }
+
                 sectionObserver.unobserve(entry.target);
             }
         });
@@ -436,3 +461,106 @@ function initFunnelSwiper() {
         }
     });
 }
+
+
+// ==============================
+// 세계 지도 - AmCharts 초기화
+// ==============================
+function initGlobalMap() {
+    if (typeof am5 === 'undefined') return;
+
+    am5.ready(function() {
+        var root = am5.Root.new("chartdiv");
+        root.setThemes([am5themes_Animated.new(root)]);
+
+        var chart = root.container.children.push(am5map.MapChart.new(root, {
+            panX: "none", panY: "none", wheelX: "none", wheelY: "none",
+            projection: am5map.geoMercator()
+        }));
+
+        var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+            geoJSON: am5geodata_worldLow,
+            exclude: ["AQ"]
+        }));
+
+        polygonSeries.mapPolygons.template.setAll({
+            fill: am5.color(0x1a2233),
+            stroke: am5.color(0x2a334d),
+            strokeWidth: 0.5
+        });
+
+        var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+        pointSeries.bullets.push(function() {
+            var container = am5.Container.new(root, {});
+            container.children.push(am5.Circle.new(root, {
+                radius: 5, fill: am5.color(0x00e5ff),
+                shadowColor: am5.color(0x00e5ff), shadowBlur: 15
+            }));
+
+            var label = am5.Label.new(root, {
+                text: "{title}", fill: am5.color(0xffffff),
+                fontSize: 12, fontWeight: "bold", populateText: true,
+                paddingLeft: 8, paddingRight: 8, paddingTop: 4, paddingBottom: 4,
+                dx: "{dx}", dy: "{dy}",
+                background: am5.Rectangle.new(root, { fill: am5.color(0x000000), fillOpacity: 0.8 })
+            });
+            container.children.push(label);
+            return am5.Bullet.new(root, { sprite: container });
+        });
+
+        var cities = [
+            { id: "seoul", title: "SEOUL", dx: 0, dy: -35, geometry: { type: "Point", coordinates: [126.97, 37.56] } },
+            { id: "usa", title: "USA", dx: 0, dy: 35, geometry: { type: "Point", coordinates: [-95.71, 37.09] } },
+            { id: "vietnam", title: "VIETNAM", dx: -60, dy: 20, geometry: { type: "Point", coordinates: [108.27, 14.05] } },
+            { id: "hongkong", title: "HONGKONG", dx: -60, dy: -15, geometry: { type: "Point", coordinates: [114.16, 22.31] } },
+            { id: "taiwan", title: "TAIWAN", dx: 60, dy: 10, geometry: { type: "Point", coordinates: [121.96, 23.69] } }
+        ];
+        pointSeries.data.setAll(cities);
+
+        var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+        lineSeries.mapLines.template.setAll({
+            stroke: am5.color(0x00e5ff),
+            strokeWidth: 1.5,
+            strokeOpacity: 0 // 처음에 투명하게 설정
+        });
+
+        function createLine(fromId, toId) {
+            var fromDataItem = pointSeries.getDataItemById(fromId);
+            var toDataItem = pointSeries.getDataItemById(toId);
+            var lineDataItem = lineSeries.pushDataItem({ pointsToConnect: [fromDataItem, toDataItem] });
+
+            var mapLine = lineDataItem.get("mapLine");
+            mapLine.set("lineType", "arc");
+            mapLine.set("strokeOpacity", 0); // 초기 투명도를 명시적으로 설정
+            globalMapLines.push(mapLine);
+        }
+
+        createLine("seoul", "usa");
+        createLine("seoul", "vietnam");
+        createLine("seoul", "hongkong");
+        createLine("seoul", "taiwan");
+
+        chart.appear(1000, 100);
+
+        // 지도 초기화 완료 플래그 설정
+        isMapReady = true;
+    });
+}
+
+// 실제로 라인을 그리는 애니메이션 함수 분리
+function playMapAnimation() {
+    if (globalMapLines.length === 0) return;
+    
+    globalMapLines.forEach(function(line, index) {
+        setTimeout(function() {
+            line.animate({
+                key: "strokeOpacity",
+                from: 0,
+                to: 0.3,
+                duration: 800,
+                easing: am5.ease.out(am5.ease.cubic)
+            });
+        }, index * 150);
+    });
+}
+

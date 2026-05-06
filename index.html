@@ -23,6 +23,10 @@
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 </head>
 
 <body>
@@ -128,7 +132,7 @@
                                                 <div class="txt-bx">
                                                     <h4 class="product-title">마그네핏(패치)</h4>
                                                     <p class="product-desc">
-                                                        "평군 일매출<br>
+                                                        "평균 일매출<br>
                                                         2,000만원 유지"
                                                     </p>
                                                 </div>
@@ -191,7 +195,7 @@
                                                 <p>매출액 (단위 : 억원)</p>
                                             </div>
                                             <div class="obj01">
-                                                <div class="inner">10</div>
+                                                <div class="inner">10억</div>
                                             </div>
                                             <div class="obj01_1">
                                                 <div class="inner"></div>
@@ -206,7 +210,7 @@
                                                 <div class="inner"><img src="./asset/images/arrow.png" alt="그래프"></div>
                                             </div>
                                             <div class="obj05">
-                                                <div class="inner"><span>210 +</span></div>
+                                                <div class="inner"><span>210억 +</span></div>
                                             </div>
                                             <div class="obj05_1">
                                                 <div class="inner"></div>
@@ -359,7 +363,7 @@
                                         <li>
                                             <div class="top-bx">
                                                 <div class="icon-bx">
-                                                    <img src="./asset/images/icon_1.png" alt="젊고 활기찬 분위기">
+                                                    <img src="./asset/images/icon_1.jpg" alt="젊고 활기찬 분위기">
                                                 </div>
                                                 <h4>젊고 활기찬 분위기</h4>
                                             </div>
@@ -370,7 +374,7 @@
                                         <li>
                                             <div class="top-bx">
                                                 <div class="icon-bx">
-                                                    <img src="./asset/images/icon_2.png" alt="열린 소통과 자유로운 의견 제시">
+                                                    <img src="./asset/images/icon_2.jpg" alt="열린 소통과 자유로운 의견 제시">
                                                 </div>
                                                 <h4>열린 소통과 자유로운 의견 제시</h4>
                                             </div>
@@ -381,7 +385,7 @@
                                         <li>
                                             <div class="top-bx">
                                                 <div class="icon-bx">
-                                                    <img src="./asset/images/icon_3.png" alt="끊임없는 성장과 도전">
+                                                    <img src="./asset/images/icon_3.jpg" alt="끊임없는 성장과 도전">
                                                 </div>
                                                 <h4>끊임없는 성장과 도전</h4>
                                             </div>
@@ -392,7 +396,7 @@
                                         <li>
                                             <div class="top-bx">
                                                 <div class="icon-bx">
-                                                    <img src="./asset/images/icon_4.png" alt="실력 중심의 공정한 기회 제공">
+                                                    <img src="./asset/images/icon_4.jpg" alt="실력 중심의 공정한 기회 제공">
                                                 </div>
                                                 <h4>실력 중심의 공정한 기회 제공</h4>
                                             </div>
@@ -488,26 +492,11 @@
                                 <div class="s_content" data-aos="fade-up">
                                     <h3 class="s-title">global</h3>
                                     <strong>한국을 넘어 글로벌 시장으로 도약합니다.</strong>
-                                    <p class="sub-title">미국과 베트남을 중심으로<br> 새로운 기회를 만들어갑니다.</p>
+                                    <p class="sub-title">미국,베트남,홍콩,대만을 중심으로<br> 새로운 기회를 만들어갑니다.</p>
                                 </div>
 
                                 <div class="map-bx">
-                                    <div class="map-bg">
-                                        <img src="./asset/images/map-bg.jpg" alt="세계지도" class="pc-block">
-                                        <img src="./asset/images/lg-map-bg.jpg" alt="세계지도" class="lg-block">
-                                        <img src="./asset/images/mobile-map-bg.jpg" alt="세계지도" class="m-block">
-                                    </div>
-                                    <div class="map-location">
-                                        <div class="map-marker seoul">
-                                            <p class="marker-text seoul"></span>SEOUL</p>
-                                        </div>
-                                        <div class="map-marker usa">
-                                            <p class="marker-text usa"></span>USA</p>
-                                        </div>
-                                        <div class="map-marker vietnam">
-                                            <p class="marker-text vietnam"></span>Vietnam</p>
-                                        </div>
-                                    </div>
+                                    <div id="chartdiv" class="map-bx"></div>
                                 </div>
                             </div>
                         </div>
@@ -546,7 +535,6 @@
         </div>
 
     </div>
-
     <script src="./asset/js/script.js"></script>
 </body>
 
