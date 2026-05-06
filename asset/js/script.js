@@ -3,7 +3,6 @@
 // ==============================
 
 var globalMapLines = [];
-var isMapReady = false;
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -20,11 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initFunnelSwiper();
 
     // ===== 세계 지도 초기화 =====
+    // initScrollAnimations는 initGlobalMap 내에서 호출됨
     initGlobalMap();
-
-    // ===== 스크롤 진입 애니메이션 (지도 초기화 후) =====
-    // 짧은 지연을 통해 지도 초기화가 진행되도록 함
-    setTimeout(initScrollAnimations, 100);
     
 
     // ===== 클릭 인터랙션 - Capabilities =====
@@ -356,16 +352,9 @@ function initScrollAnimations() {
                 entry.target.classList.add('on');
 
                 // s-global 섹션에 진입하면 지도 애니메이션 실행
+                // initGlobalMap() 이후에 호출되므로 globalMapLines는 항상 준비됨
                 if (entry.target.classList.contains('s-global')) {
-                    // globalMapLines가 준비될 때까지 재시도
-                    var retryCount = 0;
-                    var retryInterval = setInterval(function() {
-                        if (globalMapLines.length > 0 || retryCount > 50) {
-                            playMapAnimation();
-                            clearInterval(retryInterval);
-                        }
-                        retryCount++;
-                    }, 10);
+                    playMapAnimation();
                 }
 
                 sectionObserver.unobserve(entry.target);
@@ -527,6 +516,13 @@ function initGlobalMap() {
         function createLine(fromId, toId) {
             var fromDataItem = pointSeries.getDataItemById(fromId);
             var toDataItem = pointSeries.getDataItemById(toId);
+
+            // 데이터 아이템이 준비되지 않은 경우 방어 처리
+            if (!fromDataItem || !toDataItem) {
+                console.warn("Cannot create line: missing data item for " + fromId + " or " + toId);
+                return;
+            }
+
             var lineDataItem = lineSeries.pushDataItem({ pointsToConnect: [fromDataItem, toDataItem] });
 
             var mapLine = lineDataItem.get("mapLine");
@@ -542,8 +538,9 @@ function initGlobalMap() {
 
         chart.appear(1000, 100);
 
-        // 지도 초기화 완료 플래그 설정
-        isMapReady = true;
+        // 지도 초기화 완료 후 스크롤 애니메이션 초기화 (이벤트 기반)
+        // 라인이 완전히 준비된 후에 observer를 attach
+        initScrollAnimations();
     });
 }
 
