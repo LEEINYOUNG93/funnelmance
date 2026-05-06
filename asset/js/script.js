@@ -510,37 +510,38 @@ function initGlobalMap() {
         lineSeries.mapLines.template.setAll({
             stroke: am5.color(0x00e5ff),
             strokeWidth: 1.5,
-            strokeOpacity: 0 // 처음에 투명하게 설정
+            strokeOpacity: 0
         });
 
         function createLine(fromId, toId) {
             var fromDataItem = pointSeries.getDataItemById(fromId);
             var toDataItem = pointSeries.getDataItemById(toId);
 
-            // 데이터 아이템이 준비되지 않은 경우 방어 처리
             if (!fromDataItem || !toDataItem) {
                 console.warn("Cannot create line: missing data item for " + fromId + " or " + toId);
                 return;
             }
 
             var lineDataItem = lineSeries.pushDataItem({ pointsToConnect: [fromDataItem, toDataItem] });
-
             var mapLine = lineDataItem.get("mapLine");
             mapLine.set("lineType", "arc");
-            mapLine.set("strokeOpacity", 0); // 초기 투명도를 명시적으로 설정
+            mapLine.set("strokeOpacity", 0);
             globalMapLines.push(mapLine);
         }
 
-        createLine("seoul", "usa");
-        createLine("seoul", "vietnam");
-        createLine("seoul", "hongkong");
-        createLine("seoul", "taiwan");
+        // 포인트 시리즈 데이터가 완전히 처리된 후 라인 생성
+        pointSeries.events.on("datavalidated", function() {
+            // globalMapLines를 초기화하고 라인 생성
+            globalMapLines.length = 0; // 배열 비우기
+            createLine("seoul", "usa");
+            createLine("seoul", "vietnam");
+            createLine("seoul", "hongkong");
+            createLine("seoul", "taiwan");
 
-        chart.appear(1000, 100);
-
-        // 지도 초기화 완료 후 스크롤 애니메이션 초기화 (이벤트 기반)
-        // 라인이 완전히 준비된 후에 observer를 attach
-        initScrollAnimations();
+            // 라인 생성 완료 후 차트 애니메이션 및 스크롤 관찰자 초기화
+            chart.appear(1000, 100);
+            initScrollAnimations();
+        });
     });
 }
 
