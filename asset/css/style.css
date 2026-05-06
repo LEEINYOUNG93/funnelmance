@@ -2032,11 +2032,11 @@ html {
 .s-global .map-bx {
   width: 100%;
   position: relative;
-  background-color: #050b16;
   overflow: hidden;
 }
 .s-global #chartdiv {
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   height: 100vh;
 }
 @media (max-width: 1200px) {
