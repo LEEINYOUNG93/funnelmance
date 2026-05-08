@@ -1619,9 +1619,10 @@ html {
       @include d-flex;
       flex-direction: column;
       justify-content: center;
+      width: 100%;
       height: 240px;
       cursor: pointer;
-      background: rgba($color-dark, 0.3);
+      //background: rgba($color-dark, 0.3);
       //border: 1px solid $color-blue;
       transition: all 0.3s;
       position: relative;
@@ -1640,26 +1641,67 @@ html {
         transition: all 0.3s;
         opacity: 0;
         visibility: hidden;
+        @include mobile{
+          opacity: 1;
+          visibility: visible;
+        }
       }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: 2px solid $color-blue;
+        transition: all 0.5s ease-in-out;
+        opacity: 0;
+        visibility: hidden;
+      }
+
 
       @include mobile {
         height: fit-content;
-        padding: 40px 0;
+        padding: 40px 0 20px 0;
       }
 
       &:hover {
-        background: rgba($color-dark, 0.5);
+        &::after{
+          opacity: 1;
+          visibility: visible;
+        }
       }
 
 
       h4 {
         font-size: 18px;
         letter-spacing: 0;
-        margin-top: 20px;
-        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 10%;
+        background: $color-dark;
+        color: $color-white;
+        width: calc(100% - 40px);
+        height: 30px;
+        @include d-flex;
+        font-size: 16px;
+        line-height: 0.7;
 
         @include desktop {
-          font-size: 16px;
+          font-size: 14px;
+        }
+
+        @include mobile {
+          position: unset;
+          transform: none;
+          background: transparent;
+          margin-top: 20px;
+          height: fit-content;
+          line-height: 1;
+          width: 100%;
         }
       }
     }
